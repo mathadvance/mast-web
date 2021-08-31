@@ -1,29 +1,47 @@
-# Next.js + Tailwind CSS Example
+# Dennis Chen's Website
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Thie is the GitHub repository for the MAST website.
+All the code that runs the website is here.
+Currently, there's no backend,
+but we anticipate having backend very soon.
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+Our stack is
 
-## Preview
+    React JS + Next JS + Tailwind CSS
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+I cannot make this clear enough:
+**these elements are completely orthogonal**.
+There are tools that make them play better together,
+but these tools do not serve the same purpose.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+In particular, React is the framework,
+Next is used for rendering
+(it takes a hybrid server-side and client-side rendering approach),
+and Tailwind is used for styling the frontend.
 
-## Deploy your own
+This project is using `yarn` as its package manager.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Running
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+Clone the repository and run `yarn dev`.
 
-## How to use
+It is expected that you make your own database.
+You should make a file called `.env.local`
+and put all your environment variables there.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Structure
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+Very roughly, this follows
+[Tania Rascia's](https://www.taniarascia.com/react-architecture-directory-structure/#utils) guide,
+plus a separate directory for the server.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+- public: Any files I want the public to be able to view
+(hence the name).
+- resources: PDFs that would be filed under math.
+- reports: PDFs that would be filed under writing.
+- styles: Self-explanatory.
+- components: Anything that is mostly visual.
+Lines can get a little blurry between components and utils.
+- utils: Anything more complicated than a slew of `<div className="...">`
+- pages: Doh.
+- server: Backend stuff.
