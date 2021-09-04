@@ -1,4 +1,4 @@
-# Dennis Chen's Website
+# MAST Website
 
 Thie is the GitHub repository for the MAST website.
 All the code that runs the website is here.
