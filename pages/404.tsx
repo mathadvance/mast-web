@@ -9,7 +9,7 @@ function Error404() {
             <p>
                 {`This URL does not exist. `}
                 <NextLink href="/">
-                    <a className="text-blue-600 hover:text-blue-500 hover:underline">Go back?</a>
+                    <a className="text-blue-600 hover:text-blue-500 hover:underline">Return to the homepage?</a>
                 </NextLink>
             </p>
         </>
