@@ -12,7 +12,7 @@ const PageRender: FC<{ props }> = ({ props }) => {
   return (
     <>
       <Head>
-        <title>{props.data.title}</title>
+        <title>{props.data.title ? `${props.data.title} - MAST` : 'MAST'}</title>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.css"
