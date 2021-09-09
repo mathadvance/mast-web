@@ -16,8 +16,29 @@
 /build
 
 # misc
+*.asy
+*.toc
+*.out
+*.synctex.gz
+*.xwm
+*.log
+*.aux
+*.fdb_latexmk
+*.fls
+*.pre
+*.synctex
+*.synctex(busy)
 .DS_Store
 *.pem
+desktop.ini
+
+# just have to assume normal units have no more than 99 asy diagrams
+*-?.pdf
+*-??.pdf
+
+# ignore stuff from solprint
+*.prob
+*.sol
 
 # debug
 npm-debug.log*
