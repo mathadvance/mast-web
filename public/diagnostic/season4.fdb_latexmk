@@ -1,6 +1,6 @@
 # Fdb version 3
-["pdflatex"] 1631161668 "/Users/pvelicheti/mast-web/public/diagnostic/season4.tex" "season4.pdf" "season4" 1631161670
-  "/Users/pvelicheti/mast-web/public/diagnostic/season4.tex" 1631161664 275 e016f0f711ae7cdec3fd723c19a61638 ""
+["pdflatex"] 1631161668 "/Users/pvelicheti/mast-web/public/diagnostic/season4.tex" "season4.pdf" "season4" 1631161940
+  "/Users/pvelicheti/mast-web/public/diagnostic/season4.tex" 1631161939 275 e016f0f711ae7cdec3fd723c19a61638 ""
   "/Users/pvelicheti/texmf/tex/latex/chessBM.sty" 1622260229 1047 16f6da2441590643e20f69be1f6b16bb ""
   "/Users/pvelicheti/texmf/tex/latex/fonts.sty" 1622260229 965 96bb238566f4794235ab54906af9242e ""
   "/Users/pvelicheti/texmf/tex/latex/lucky.cls" 1622260229 7971 9883ce382d25b4f9808dd8dbe1d0a44c ""
@@ -372,10 +372,10 @@
   "season4.aux" 1631161670 1529 ece4461409b9b1861193678c2e9f5245 "pdflatex"
   "season4.out" 1631161670 630 627ef5c4a5f30b4c9a3367eb97b7f0e5 "pdflatex"
   "season4.pre" 1631161668 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "season4.tex" 1631161664 275 e016f0f711ae7cdec3fd723c19a61638 ""
+  "season4.tex" 1631161939 275 e016f0f711ae7cdec3fd723c19a61638 ""
   (generated)
   "season4.aux"
-  "season4.log"
-  "season4.out"
   "season4.pdf"
   "season4.pre"
+  "season4.out"
+  "season4.log"
