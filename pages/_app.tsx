@@ -9,8 +9,10 @@ function MyApp({ Component, pageProps }) {
         <link rel="shortcut icon" type="image/x-icon" href="masticon.svg" />
       </Head>
       <div className="min-h-screen bg-gray-100 flex justify-center">
-        <div className="mx-12 my-12 w-full max-w-screen-lg space-y-2">
-          <Component {...pageProps} />
+        <div className="mx-12 my-12 w-full max-w-screen-lg">
+          <div className="space-y-2">
+            <Component {...pageProps} />
+          </div>
         </div>
       </div>
     </>
