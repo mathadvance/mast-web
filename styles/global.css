@@ -12,4 +12,33 @@
   h3 {
     @apply text-xl font-bold;
   }
+  ul {
+    @apply list-outside list-disc pl-4 space-y-1;
+  }
+  ul li {
+    @apply pl-1 space-y-2;
+  }
+  ol {
+    @apply list-outside list-decimal pl-4 space-y-1;
+  }
+  ol li {
+    @apply pl-1 space-y-2;
+  }
+  [role="doc-noteref"] {
+    @apply pr-0.5;
+  }
+  [role="doc-backlink"] {
+    @apply pl-1.5;
+  }
+  [role="doc-endnotes"] {
+    @apply space-y-2;
+  }
+}
+
+[role="doc-noteref"] sup::before {
+  content: "[";
+}
+
+[role="doc-noteref"] sup::after {
+  content: "]";
 }
