@@ -2,7 +2,7 @@ import NextLink from "next/link";
 
 function TopBar() {
   return (
-    <div className="w-full max-w-screen-lg mx-auto flex justify-between p-2 border-b-2 border-gray-300 text-lg">
+    <div className="w-full max-w-screen-lg mx-auto flex justify-between p-2 border-b border-gray-300 text-lg">
       <NextLink href="/">
         <a>MAST</a>
       </NextLink>
