@@ -1,0 +1,110 @@
+\documentclass{lucky}
+
+\title{MAST Diagnostic}
+\author{Dennis Chen, Aprameya Tripathy, William Zhao, Valentio Iverson}
+\date{Season 2}
+
+\begin{document}
+
+\maketitle
+
+\section{Instructions}
+
+The MAST Diagnostic is a selection of problems I've written that have appeared in various mock competitions. You must submit a sketch of the solution for computational problems \textbf{that shows you know how to do the problem} and full, rigorous solutions for proof problems. In particular, I will not count hand-wavey stuff in your favor. I will not count it against you either (within reason), so as long as you're making a genuine effort, you should not be scared to submit your work.
+\\[1\baselineskip]
+You may see last year's Diagnostic \href{https://www.geometryexplorer.xyz/pdfs/Diagnostic2020.pdf}{here}, and the TeX source \href{https://dl.dropboxusercontent.com/s/vjhnx6rzj4wd8ld/diagnosticquiz2020.tex?dl=0}{here}. To compile the TeX, you need \textbf{dennis.sty}, which you can find a copy of \href{https://raw.githubusercontent.com/chennisden/geometryexplorer/gh-pages/texmf/tex/latex/dennis.sty}{here}. Since \textbf{dennis.sty} is a dynamic file, your output will not look the same as the PDF.
+
+\subsection{Asking for Help}
+If you've been stuck on a problem for a while and want a hint, you can ask me \textbf{or other people}. You may also consult static media. (This includes books, articles, and parts of the internet such as encyclopedias or other references. This \textbf{does not} include making a forum post on AoPS or StackExchange. You also may not look for the problem.) If you do ask other people, here are a couple of rules:
+\begin{itemize}
+\item Do not ask any MAST students/applicants/potential applicants.
+
+\item The person helping you should know that they are helping you on a diagnostic, intended to gauge your ability. So they should not give you the entire solution and instead be giving helpful hints.
+
+\item Don't try to get the solution, try to get small hints. Just enough to get you moving forward on the problem.
+
+\item You \textbf{must} indicate to me that you have asked someone for help, and you must indicate to me how they have helped you. (Even if it wasn't actually helpful in the end.)
+\end{itemize}
+I want to stress that these are not suggestions or requests. These are hard rules that \textbf{must be followed} if you ask someone else for help. \textbf{Deliberately omitting any of these steps is academic dishonesty, and may get you banned from the program.}
+\\[1\baselineskip]
+You do not have to do any of the above if you ask me, because I know you're an applicant, you're doing my Diagnostic, I won't give you my solution, and I know I helped you (even if it wasn't helpful in the end).
+
+\subsection{Seen Before}
+Because these are mostly problems that've appeared elsewhere, some applicants may have seen some of the problems. If you have, there is no need to indicate that - just don't go to the problem discussion thread and look for the solution. If you've already been to the problem discussion thread before you've looked at the Diagnostic and remember the gist of a solution, you may use that.
+
+\subsection{Points}
+Points are just a rough way to communicate how much I care about each problem. The points are completely orthogonal for Computational and Proof. The minimum required points are just a suggestion and should not be taken too seriously, but it is a good way to gauge if you've done enough or should keep working. Note that the minimum point recommendation would be \textbf{after} a hypothetical grading, so if you did 50 points worth of problems but only got 10 of those points, you will not make it over the 40 point minimum requirement.
+\\[1\baselineskip]
+Similarly, the required problems are not required, just highly recommended. (This is different from MAST Handouts.) Not doing a required problem will not hurt your chances any more than not doing another similarly valued problem.
+
+\pagebreak
+
+\section{Computational}
+
+\minpt{25}
+
+\vspace{0.3cm}
+
+\begin{prob}[JMC 10 2020/6, by Dennis Chen]{1}
+    Cars A and B, travelling at constant, different speeds, are headed directly from Austin to Boston and from Boston to Austin respectively. Car A leaves at $9\text{:}00$ AM, and Car B leaves an hour later. If the two cars meet when Car A is $\frac{2}{3}$ of the way to Boston, and Car A arrives at Boston at $3\text{:}00$ PM, when does Car B reach Austin?
+\end{prob}
+
+\begin{prob}[e-dchen Mock MATHCOUNTS, by Dennis Chen]{2}
+    Consider chord $AB$ of circle $\omega$ centered at $O.$ Let $P$ be a point on segment $AB$ such that $AP=2$ and $BP=8.$ If $\angle APO=150^{\circ},$ what is the area of $\omega?$
+\end{prob}
+
+\begin{prob}[Dennis Chen]{3}
+    What is the smallest positive integer $k$ such that there is no integer solution $n$ to $\lfloor \frac{n^2}{36}\rfloor=k?$
+\end{prob}
+
+\begin{prob}[JMC 10 2020/21, by Dennis Chen]{4}
+    What is the base-$10$ sum of all positive integers such that, when expressed in binary, have $7$ digits and have no two consecutive $1$'s?
+\end{prob}
+
+\begin{req}[JMC 10 2020/22]{4}
+    What is the units digit of the remainder when $17^7+17^2+1$ is divided by $307^2?$
+\end{req}
+
+\begin{prob}[Dennis Chen]{6}
+    Consider $\triangle ABC$ with $AB=5,$ $BC=7,$ and $CA=4\sqrt{2}.$ Let $H$ be the foot of the altitude from $A$ to $BC.$ If $P$ is a point on $AC,$ find the minimum value of $BP+HP.$
+\end{prob}
+
+\begin{prob}[Dennis Chen]{6}
+    Find the remainder of $(1^3)(1^3+2^3)(1^3+2^3+3^3)\dots(1^3+2^3+3^3\dots+99^3)$ when divided by $101.$
+\end{prob}
+
+\begin{req}[Dennis Chen]{9}
+    Andy the unicorn is on a number line from $1$ to $2019.$ He starts on $1.$ Each step, he randomly and uniformly picks an integer greater than the integer he is currently on, and goes to it. He stops when he reaches $2019.$ What is the probability he is ever on $1984?$
+\end{req}
+
+\begin{prob}[Aprameya Tripathy]{9}
+    Let $\triangle ABC$ have $AB=5,$ $BC=8,$ and $CA=7,$ and let $G$ be the centroid of $\triangle ABC.$ If the reflection of $G$ about the angle bisectors of $\angle A,\angle B,\angle C$ are $S_1,S_2,S_3,$ respectively, then find the radius of the circle passing through $S_1,S_2,S_3.$
+\end{prob}
+
+\newpage
+
+\section{Proof}
+
+\minpt{12}
+
+\begin{prob}[Dennis Chen]{3}
+    Consider $\triangle ABC,$ and let the feet of the $B$ and $C$ altitudes of the triangle be $X,Y.$ Let $XY$ intersect $BC$ at $P.$ Prove that the circumcircles of $\triangle PBY$ and $\triangle PCX$ concur with $AP$ at a point other than $P.$
+\end{prob}
+
+\begin{prob}[William Zhao]{4}
+    Let $n$ be a real number such that for all positive reals $a,b,c$, \[\sum_{cyc}\frac{b+c}{\sqrt{a+b+c}+\sqrt{a}}\ge n\sqrt{a+b+c}.\] Find, with proof, the maximal value $n$ can take.
+\end{prob}
+
+\begin{req}[Dennis Chen]{6}
+    In $\triangle ABC,$ let the foot of $B$ to $AC$ be $E$ and the foot of $C$ to $AB$ be $F.$ Suppose that the circle through $F$ centered at $B$ is externally tangent to the circle through $E$ centered at $C$ at some point $D.$ Let $G$ be the midpoint of $EF.$ Prove that $DG$ is perpendicular to $BC.$
+\end{req}
+
+\begin{prob}[Quite Easily Done Senior/4, by Dennis Chen]{6}
+    Let $f(x)=x^2-12x+36.$ In terms of $k$, for $k\geq 2,$ find the sum of all real $n$ such that $f^{k-1}(n)=f^k(n).$
+\end{prob}
+
+\begin{prob}[DeuX MO J5, by Dennis Chen and Valentio Iverson]{9}
+    Call an ordered pair of distinct integers $(a,b)$ \textbf{lovely} if $a\mid b$ and $f(a)\mid f(b)$ and \textbf{funny} if $a\mid b$ but $f(a)\nmid f(b),$ where $f$ is a polynomial with integer coefficients. Determine all polynomials $f$ with integer coefficients such that there exists infinitely many \textbf{lovely} and \textbf{funny} pairs of distinct integers.
+\end{prob}
+
+\end{document}

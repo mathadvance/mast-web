@@ -1,0 +1,78 @@
+\documentclass{lucky}
+
+\newcommand{\problem}[2]{\noindent{\color{dennispurple}\bfseries #1. }#2}
+
+\title{MAST Diagnostic}
+\author{Math Advance!}
+\date{Season 3}
+
+\begin{document}
+\maketitle
+
+\section{Rules and Instructions}
+
+The MAST Diagnostic is a selection of problems the staff team has written that have appeared in various contests. Because the first lecture is so soon, I've abridged the diagnostic to 8 computational problems and 0 proof. (You're welcome.)
+
+Major changes:
+\begin{itemize}
+\item The proof section is entirely removed; computational has been fixed to be 8 problems total, 2 per each subject. One problem is easy-medium and the other is medium-hard in difficulty. \emph{However, there are still some things you must prove}: I will make it clear if I want a full and rigorous proof for a ``find-all'' style problem.\footnote{Nevertheless, problems will still mostly be computational in nature.} \emph{Solution sketches, at a minimum, are still mandatory.} Convince me you know how to solve the problem on your own.\footnote{This used to be a saying I stole to indicate how much work you needed to do, but based on the number of cheaters last season, I actually mean it when I say it this time.}
+
+\item The points system has been removed.\footnote{It only ended up discouraging the people who had less of a chance to make it, which is the last thing I want to do. And people kept asking me ``how much should I do'' anyway, so it didn't save me any questions. (For the record, please don't ask how much you need to do: the answer is ``as much as you can, to a reasonable extent.'')} Part of the reason is because the relative difficulty of each problem should be clear, given there's only two per subject.
+
+\item You must indicate if you remember a past problem.
+
+\item If you think you've accidentally broken any of these rules, please let me know. The difference between cheating and a mistake is \emph{transparency}.
+
+\item If you've deliberately broken any of these rules, please also let me know. I believe that cheaters can become better people. Please prove me right.
+\end{itemize}
+
+\subsection{Asking for Help}
+If you've been stuck on a problem for a while and want a hint, you can ask me \emph{or other people}. You may also consult static media. (This includes books, articles, and parts of the internet such as encyclopedias or other references. This \emph{does not} include making a forum post on AoPS or StackExchange. You also may not look for the problem.) If you do ask other people, here are a couple of rules:
+\begin{itemize}
+\item Do not ask any MAST students/applicants/potential applicants.
+
+\item The person helping you should know that they are helping you on a diagnostic intended to gauge your ability. So they should not give you the entire solution and instead be giving helpful hints.
+
+\item Don't try to get the solution, try to get small hints. Just enough to get you moving forward on the problem.
+
+\item You \emph{must} indicate to me that you have asked someone for help, and you must indicate to me how they have helped you. (Even if it wasn't actually helpful in the end.)
+\end{itemize}
+I want to stress that these are not suggestions or requests. These are hard rules that \emph{must be followed} if you ask someone else for help. \emph{Deliberately omitting any of these steps is academic dishonesty, and may get you banned from the program.} Some examples of people you can ask: past/current students, your math coach, your parents, college friends, people overqualified to be a student of the program,\footnote{If this describes you and you want to get involved with the program, shoot me a PM! I always appreciate more staff.} et cetera.
+
+\subsection{Seen Before}
+Because these are mostly problems that've appeared elsewhere, some applicants may have seen some of the problems. Policy change from last year: \emph{if there is any way you may have been exposed to the problem before}, such as taking JMC and/or reviewing the solutions packet, \emph{indicate this in your PDF submission}.\footnote{Contrary to what might be popular belief, you actually have better chances if you have done MAC contests. Those of you who have followed my streams more closely know that \emph{I am a nepotist}, and I think that if you care enough to take our mock contests, you deserve to make the program. Obviously I won't really factor it in either way, since your problemset, essays, and contest scores (to a lesser extent) are much more important to me.}
+
+Something that might be obvious but should be explicitly stated anyway: if you intend to apply, you should not look at any of the problems after you've seen this document. Nor should you frantically review JMC/NARML to ``prepare'' for this application. You know what's right and what's not, so please don't make yourself look stupid by claiming that something obviously unfair is ``technically not cheating.''
+
+\pagebreak
+
+\section{Problems}
+
+\subsection{Algebra}
+
+\problem{A1}{What is the value of
+\[\frac{(2019+2020)(2020+2021)(2021+2019)+2019\cdot 2020\cdot 2021}{2019\cdot 2020+2020\cdot 2021+2021\cdot 2019}?\]}\vspace{0.3cm} % jmc 16
+
+\problem{A2}{Find $\sum\limits_{a=1}^{\infty}\frac{32a}{16a^4+24a^2+25}.$} % mast 2020/c7
+
+\subsection{Combo}
+
+\problem{C1}{Steven has $4$ lit candles and each candle is blown out with a probability $\frac{1}{2}$. After he finishes blowing, he randomly selects a possibly empty subset out of all the candles. What is the probability his subset has at least one lit candle?}\vspace{0.3cm}
+
+\problem{C2}{For each positive integer $n$, let $s(n)$ denote the sum of the digits of $n$ when written in base 10. An integer $x$ is said to be tasty if
+\[s(11x) = s(101x) = s(1001x) = \cdots=18.\]How many \emph{tasty} integers are less than $10^8$?} % jmc 23, fuck you oceanxia
+
+\subsection{Geometry}
+
+\problem{G1}{Consider parallelogram $ABCD$ with $AB=7,$ $BC=6.$ Let the angle bisector of $\angle DAB$ intersect $BC$ at $X$ and $CD$ at $Y.$ Let the line through $X$ parallel to $BD$ intersect $AD$ at $Q.$ If $QY=6,$ find $\cos\angle DAB.$}\vspace{0.3cm} % mast 2020/c3
+
+\problem{G2}{An equilateral triangle $ACK$ is located inside a regular decagon $ABCDEFGHIJ.$ If the area of the decagon is $1,$ find the area of $HIJAK.$} % dylan, transformations
+
+\subsection{Number Theory}
+
+\problem{N1}{Compute the smallest positive integer $n$ such that $9(n+3)$ divides $4n!+n+5$.}\vspace{0.3cm} % skyscraper narml factorial?
+
+\problem{N2}{Find all positive integers $n$ such that
+\[\frac{1!\cdot 2!\cdot 3!\cdots 2019!\cdot 2020!}{n!}\]
+is a perfect square.} % jmc 25
+\end{document}
