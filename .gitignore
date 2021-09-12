@@ -32,3 +32,20 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# TeX
+*.asy
+*.toc
+*.out
+*.synctex.gz
+*.xwm
+*.log
+*.aux
+*.fdb_latexmk
+*.fls
+*.pre
+*.synctex
+*.synctex(busy)
+
+## exclude compiled PDF diagrams
+*-[0-9]*.pdf
