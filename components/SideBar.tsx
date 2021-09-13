@@ -19,7 +19,7 @@ function SideRow({ needsUser = false, link, label, icon }) {
   }
   return (
     <NextLink href={link}>
-      <a className="flex gap-x-2 items-center text-pink-700 hover:text-pink-600 hover:underline">
+      <a className="flex gap-x-2 items-center text-pink-700 hover:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 hover:underline">
         <div className="text-lg">{icon}</div>
         <div>{label}</div>
       </a>
@@ -29,7 +29,7 @@ function SideRow({ needsUser = false, link, label, icon }) {
 
 function SideBar() {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-1 gap-y-1.5 bg-pink-50 rounded-xl border border-pink-500 p-4">
+    <div className="grid grid-cols-2 sm:grid-cols-1 gap-y-1.5 bg-pink-50 dark:bg-pink-800 rounded-xl border border-pink-500 dark:border-0 p-4">
       <SideRow needsUser link="/home" label="Home" icon={<FaHome />} />
       <SideRow needsUser link="/settings" label="Settings" icon={<FaCog />} />
       <SideRow link="/about" label="About" icon={<FaInfo />} />

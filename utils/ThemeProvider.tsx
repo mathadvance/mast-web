@@ -17,7 +17,7 @@ const ThemeProvider: React.FC<{}> = ({ children }) => {
 
   // get OS theme
   const getOSTheme = () => {
-    return window.matchMedia("(prefers-color-scheme: dark").matches
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
   };

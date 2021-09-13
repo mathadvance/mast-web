@@ -9,7 +9,7 @@ function TopBar() {
       <div className="flex gap-x-1.5">
         <div>
           <NextLink href="signup">
-            <a className="text-blue-600 hover:text-blue-500 hover:underline">
+            <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
               Sign Up
             </a>
           </NextLink>
@@ -17,7 +17,7 @@ function TopBar() {
         <div className="text-gray-400">|</div>
         <div>
           <NextLink href="login">
-            <a className="text-blue-600 hover:text-blue-500 hover:underline">
+            <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
               Log In
             </a>
           </NextLink>
