@@ -6,6 +6,7 @@ import ThemeProvider from "@/utils/ThemeProvider";
 import "@/styles/global.css";
 import TopBar from "@/components/TopBar";
 import SideBar from "@/components/SideBar";
+import Footer from "@/components/Footer";
 
 const emptyPages = ["login", "signup"];
 // pages where components
@@ -24,7 +25,7 @@ function MyApp({ Component, pageProps }) {
           <link rel="shortcut icon" type="image/x-icon" href="masticon.svg" />
         </Head>
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center">
-          <div className="px-12 py-6 w-full max-w-screen-lg">
+          <div className="px-12 py-6 w-full max-w-screen-lg md:max-w-screen-xl xl:max-w-max">
             {emptyPages.indexOf(lastPath) > -1 ? (
               <Component {...pageProps} />
             ) : (
@@ -43,6 +44,9 @@ function MyApp({ Component, pageProps }) {
                 </div>
               </>
             )}
+            <div className = "absolute inset-x-0 bottom-0 p-12">
+            <Footer/>
+            </div>
           </div>
         </div>
       </html>
