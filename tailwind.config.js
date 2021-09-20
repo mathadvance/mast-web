@@ -9,10 +9,11 @@ module.exports = {
     screens: {
       // completely replace
       // extend doesn't work because otherwise, widephone is applied last
-      // don't include lg xl or 2xl because they aren't used
+      // don't include xl or 2xl because they aren't used
       widephone: "480px",
       sm: "640px",
       md: "768px",
+      lg: "1024px",
     },
   },
   variants: {
