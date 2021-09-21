@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
       <html>
         <Head>
           <title>MAST</title>
-          <link rel="shortcut icon" type="image/x-icon" href="masticon.svg" />
+          <link rel="shortcut icon" type="image/x-icon" href="sail.svg" />
         </Head>
         <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center">
           {emptyPages.indexOf(lastPath) > -1 ? (

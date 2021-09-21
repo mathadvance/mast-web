@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="24.27984mm"
-   height="29.582762mm"
-   viewBox="0 0 24.27984 29.582762"
+   width="23.420927mm"
+   height="27.17771mm"
+   viewBox="0 0 23.420927 27.17771"
    version="1.1"
    id="svg5"
    inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
@@ -23,13 +23,13 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="2.4159933"
-     inkscape:cx="41.18389"
-     inkscape:cy="60.637586"
-     inkscape:window-width="1920"
-     inkscape:window-height="1035"
-     inkscape:window-x="1920"
-     inkscape:window-y="45"
+     inkscape:zoom="4.8319866"
+     inkscape:cx="23.282349"
+     inkscape:cy="22.55801"
+     inkscape:window-width="958"
+     inkscape:window-height="1034"
+     inkscape:window-x="0"
+     inkscape:window-y="46"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -38,15 +38,15 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-78.56211,-95.920958)">
+     transform="translate(-78.423224,-95.66333)">
     <path
        style="display:inline;fill:#1d4ed8;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 90.019618,95.920958 C 87.781709,108.02278 86.108268,115.94517 78.56211,125.50372 85.5273,119.63896 91.803423,114.30825 102.84195,118.77745 96.666017,112.82904 90.988736,105.72331 90.019618,95.920958 Z"
+       d="m 89.021817,95.66333 c -4.778107,10.23219 -7.490013,13.68387 -9.689427,27.17771 6.96519,-5.86476 11.473232,-8.79042 22.51176,-4.32122 -6.175934,-5.94841 -11.853215,-13.05414 -12.822333,-22.85649 z"
        id="path300"
        sodipodi:nodetypes="cccc" />
     <path
        style="fill:#1d4ed8;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 90.071209,105.4426 c -17.403143,3.64702 6.290335,14.31752 12.283531,16.21621 l 0.002,3.02856 C 96.721791,122.72436 71.093969,108.13728 89.2539,105.01341 Z"
+       d="m 87.839822,105.87573 c -22.231414,4.38898 7.978781,12.41355 13.449808,14.24551 l 0.012,2.20431 c -5.942653,-1.97797 -38.174394,-14.0355 -14.010215,-16.86743 z"
        id="path1332"
        sodipodi:nodetypes="ccccc" />
   </g>
