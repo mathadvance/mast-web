@@ -1,10 +1,17 @@
 import NextLink from "next/link";
+import { logo } from "@/utils/paths";
 
 function TopBar() {
   return (
     <div className="w-full mx-auto flex justify-between p-2 border-b border-gray-300 text-lg">
       <NextLink href="/">
-        <a>MAST</a>
+        <a>
+          <img
+            src={logo}
+            className="h-8 text-blue-600"
+            alt="MAST"
+          />
+        </a>
       </NextLink>
       <div className="flex gap-x-1.5">
         <div>
