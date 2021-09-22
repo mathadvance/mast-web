@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { logo } from "@/utils/paths";
+import { logoPath } from "@/utils/paths";
 
 function TopBar() {
   return (
@@ -7,7 +7,7 @@ function TopBar() {
       <NextLink href="/">
         <a>
           <img
-            src={logo}
+            src={logoPath}
             className="h-8 text-blue-600"
             alt="MAST"
           />

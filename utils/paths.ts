@@ -1,1 +1,1 @@
-export const logo = "mast.svg";
+export const logoPath = "mast.svg";
