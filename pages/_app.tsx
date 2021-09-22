@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
               <div className="my-8" />
               <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-3 md:grid-cols-4 gap-x-10">
                 <div className="order-last sm:order-first sm:col-span-2 md:col-span-3">
-                  <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg space-y-2">
+                  <div className="p-6 bg-gray-50 dark:bg-gray-800 rounded-xl shadow-lg space-y-2">
                     <Component {...pageProps} />
                   </div>
                 </div>
