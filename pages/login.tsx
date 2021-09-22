@@ -1,10 +1,10 @@
 import NextLink from "next/link";
-import { FormBox, FormInput } from "@/components/FormComponents";
+import { FormBox, FormInput, FormSubmit } from "@/components/FormComponents";
 
 function Login() {
   return (
     <FormBox>
-      <h1 className="font-normal">Log In</h1>
+      <h1 className="font-normal">Login</h1>
       <FormInput placeholder="Username" />
       <FormInput placeholder="Password" />
       <div>
@@ -15,6 +15,7 @@ function Login() {
           </a>
         </NextLink>
       </div>
+      <FormSubmit text="Login" />
     </FormBox>
   );
 }
