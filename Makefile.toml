@@ -1,8 +1,17 @@
 [tasks.dev]
-dependencies = ["client_dev", "server_dev"]
+run_task = { name = [
+    "client_dev",
+    "server_dev"
+], parallel = true }
 
 [tasks.client_dev]
-command = "cd client && yarn dev"
+script = [
+    "cd client",
+    "yarn dev"
+]
 
 [tasks.server_dev]
-command = "cd server && cargo run"
+script = [
+    "cd server",
+    "cargo run"
+]
