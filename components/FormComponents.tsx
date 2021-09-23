@@ -1,6 +1,9 @@
-import { ChangeEventHandler, MouseEvent, MouseEventHandler } from "react";
+import { ChangeEventHandler, MouseEvent, MouseEventHandler, useState } from "react";
 import NextLink from "next/link";
 import { logoPath } from "@/utils/paths";
+import CheckBox from "@/components/CheckBox";
+
+import { FaCheck } from "react-icons/fa";
 
 const FormBox = ({ children }) => {
   return (
@@ -24,22 +27,31 @@ const FormBox = ({ children }) => {
 
 const FormInput = ({
   placeholder = "",
-  onChange = () => {},
+  onChange = () => { },
+  type = "text",
 }: {
   placeholder?: string;
   onChange?: ChangeEventHandler;
+  type?: string;
 }) => {
+  const [showPassword, setShowPassword] = useState(false);
   return (
-    <input
-      className="h-11 w-full px-4 rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900"
-      placeholder={placeholder}
-    />
+    <div>
+      <input
+        className="w-full px-4 h-11 rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900"
+        placeholder={placeholder}
+        type={type === "password" ? (showPassword ? "text" : "password") : type}
+      />
+      {type === "password" &&
+        <CheckBox text="Show password" onClick={() => setShowPassword(!showPassword)} />
+      }
+    </div>
   );
 };
 
 const FormSubmit = ({
   text = "",
-  onClick = (event: MouseEvent) => {},
+  onClick = (event: MouseEvent) => { },
   disabled = true,
 }: {
   text?: string;
@@ -50,7 +62,7 @@ const FormSubmit = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className="w-full bg-blue-700 text-lg py-1.5"
+      className="w-full bg-blue-700 rounded-md bg-opacity-90 text-gray-100 text-lg py-1.5"
     >
       {text}
     </button>

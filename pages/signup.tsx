@@ -1,5 +1,5 @@
 import NextLink from "next/link";
-import { FormBox, FormInput } from "@/components/FormComponents";
+import { FormBox, FormInput, FormSubmit } from "@/components/FormComponents";
 
 function Signup() {
   return (
@@ -9,8 +9,8 @@ function Signup() {
       <FormInput placeholder="Name" />
       <FormInput placeholder="Username" />
       <FormInput placeholder="Graduation Year" />
-      <FormInput placeholder="Password" />
-      <FormInput placeholder="Confirm Password" />
+      <FormInput placeholder="Password" type="password" />
+      <FormSubmit text="Sign Up" />
       <div>
         {`Have an account already? `}
         <NextLink href="login">
