@@ -1,0 +1,8 @@
+[tasks.dev]
+dependencies = ["client_dev", "server_dev"]
+
+[tasks.client_dev]
+command = "cd client && yarn dev"
+
+[tasks.server_dev]
+command = "cd server && cargo run"

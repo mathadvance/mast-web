@@ -31,17 +31,25 @@ and put all your environment variables there.
 
 ## Structure
 
+The top-level directory names are quite self-explanatory.
+Build tasks are automated via `cargo-make`.
+
+### Client
+
 Very roughly, this follows
 [Tania Rascia's](https://www.taniarascia.com/react-architecture-directory-structure/#utils) guide,
 plus a separate directory for the server.
 
 - public: Any files I want the public to be able to view
-(hence the name).
+  (hence the name).
 - resources: PDFs that would be filed under math.
 - reports: PDFs that would be filed under writing.
 - styles: Self-explanatory.
 - components: Anything that is mostly visual.
-Lines can get a little blurry between components and utils.
+  Lines can get a little blurry between components and utils.
 - utils: Anything more complicated than a slew of `<div className="...">`
 - pages: Doh.
-- server: Backend stuff.
+
+### Server
+
+We use the `actix-web` framework written in Rust.
