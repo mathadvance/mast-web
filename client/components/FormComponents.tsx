@@ -71,7 +71,7 @@ const FormSubmit = ({
     <button
       onClick={onClick}
       disabled={disabled}
-      className="w-full bg-blue-700 rounded-md bg-opacity-90 text-gray-100 text-lg py-1.5"
+      className="w-full bg-blue-700 hover:bg-blue-600 active:bg-blue-800 rounded-md bg-opacity-90 text-gray-100 text-lg py-1.5"
     >
       {text}
     </button>
