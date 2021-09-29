@@ -25,7 +25,7 @@ const FormBox = ({ children }) => {
 
 const FormInput = ({
   placeholder = "",
-  onChange = () => {},
+  onChange = () => { },
   type = "text",
   desc,
 }: {
@@ -45,9 +45,8 @@ const FormInput = ({
       />
       {desc && (
         <div
-          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${
-            type != "password" && `-mb-2`
-          }`}
+          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${type != "password" && `-mb-2`
+            }`}
         >
           {desc}
         </div>
@@ -67,7 +66,7 @@ const FormInput = ({
 
 const FormSubmit = ({
   text = "",
-  onClick = (event) => {},
+  onClick = (event) => { },
   disabled = true,
 }: {
   text?: string;
