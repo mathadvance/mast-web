@@ -10,7 +10,7 @@ export interface User {
     username: string;
     password: string;
     role: string; // Will have to do a little data manipulation before feeding this into MongoDB
-    // We will not have the user input this; instead, we will just give new users the User role.
+    // We will not have the user input this; instead, we will just give new users the UNVERIFIED role.
 
     first_name: string;
     last_name: string;
