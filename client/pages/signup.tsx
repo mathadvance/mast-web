@@ -9,8 +9,13 @@ import { ChangeEvent, useState } from "react";
 import { User, UserError } from "@/utils/server/User";
 
 function Signup() {
-  const [user, setUserRaw] = useState(new User());
-  const setUser = (property: string, value: string) => {};
+  const [user, setUser] = useState(new User());
+  const [gradYear, setGradYear] = useState("");
+  const setUserProperty = (property: string, value: string | number) => {
+    const updatedUser: User = user;
+    updatedUser[property] = value.toString();
+    setUser(updatedUser);
+  }
   const [error, setError] = useState("");
   return (
     <FormBox>
@@ -18,17 +23,37 @@ function Signup() {
       <div className="grid grid-cols-2 gap-x-4">
         <FormInput
           placeholder="First Name"
-          onChange={(event: ChangeEvent, newValue: string | null) => {
-            setUser("first_name", newValue || " ");
+          onChange={(event) => {
+            setUserProperty("first_name", event.target.value);
           }}
         />
-        <FormInput placeholder="Last Name" />
+        <FormInput
+          placeholder="Last Name"
+          onChange={(event) => {
+            setUserProperty("last_name", event.target.value);
+          }} />
       </div>
-      <FormInput placeholder="Email Address" />
-      <FormInput placeholder="Username" />
+      <FormInput
+        placeholder="Email Address"
+        onChange={(event) => {
+          setUserProperty("email", event.target.value);
+        }}
+      />
+      <FormInput
+        placeholder="Username"
+        value={user.username}
+        onChange={(event) => {
+          setUserProperty("username", event.target.value);
+        }}
+      />
       <FormInput
         placeholder="Graduation Year"
         desc="Enter your high school graduation year."
+        value={gradYear}
+        pattern="\d{0,4}"
+        onChange={(event) => {
+          setGradYear((gradYear) => (event.target.validity.valid ? event.target.value : gradYear))
+        }}
       />
       <FormInput
         placeholder="Password"
@@ -44,20 +69,15 @@ function Signup() {
             .
           </>
         }
-      />
-      <button
-        className="bg-red-500 h-10 w-full"
-        onClick={(event) => {
-          if (UserError(user)) {
-            setError(UserError(user).toString()); // use toString even though by definition UserError has to return a string, because Typescript thinks it can be a boolean
-          } else {
-            Submit;
-          }
+        onChange={(event) => {
+          setUserProperty("password", event.target.value);
         }}
       />
       <FormSubmit
         text="Sign Up"
-        onClick={(event) => {
+        disabled={false}
+        onClick={() => {
+          setUserProperty("graduation_year", gradYear);
           if (UserError(user)) {
             setError(UserError(user).toString()); // use toString even though by definition UserError has to return a string, because Typescript thinks it can be a boolean
           } else {

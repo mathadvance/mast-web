@@ -28,11 +28,15 @@ const FormInput = ({
   onChange = () => { },
   type = "text",
   desc,
+  value = null,
+  pattern = null,
 }: {
   placeholder?: string;
   onChange?: any;
   type?: string;
   desc?: any;
+  value?: string | number;
+  pattern?: string;
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
@@ -42,6 +46,8 @@ const FormInput = ({
         placeholder={placeholder}
         onChange={onChange}
         type={type === "password" ? (showPassword ? "text" : "password") : type}
+        value={value}
+        pattern={pattern}
       />
       {desc && (
         <div

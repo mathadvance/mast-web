@@ -18,20 +18,20 @@ export class User {
 }
 
 export const UserError = (user: User) => {
-  if (/^[A-Za-z\-]+$/.test(user.first_name)) {
-    return "Your first name must only contain letters and hyphens.";
-  }
-  if (/^[A-Za-z\-]+$/.test(user.last_name)) {
-    return "Your last name must only contain letters and hyphens.";
-  }
-  if (!user.first_name) {
+  if (!user.first_name || user.first_name.length === 0) {
     return "Your first name may not be empty.";
   }
-  if (!user.last_name) {
-    return "Your last name may not be empty.";
+  if (!/^[A-Za-z\-]+$/.test(user.first_name)) {
+    return "Your first name must only contain letters and hyphens.";
   }
   if (user.first_name.length > 20) {
     return "Your first name may not be longer than 20 characters.";
+  }
+  if (!user.last_name || user.last_name.length === 0) {
+    return "Your last name may not be empty.";
+  }
+  if (!/^[A-Za-z\-]+$/.test(user.last_name)) {
+    return "Your last name must only contain letters and hyphens.";
   }
   if (user.last_name.length > 20) {
     return "Your last name may not be longer than 20 characters.";
@@ -42,11 +42,17 @@ export const UserError = (user: User) => {
   if (!user.username || user.username === "") {
     return "Your username may not be empty.";
   }
+  if (user.username.indexOf(" ") > -1) {
+    return "Your username may not contain any spaces.";
+  }
   if (user.username.length > 20) {
     return "Your username may not be longer than 20 characters.";
   }
-  if (!Number.isInteger(user.graduation_year) || user.graduation_year > 2100) {
-    return "Your graduation year must be an integer between 2000 and 2100.";
+  if (user.graduation_year < 1900 || user.graduation_year > 2100) {
+    return "Your graduation year must be between 1900 and 2100.";
+  }
+  if (!user.password || user.password.length === 0) {
+    return "You must input a password."
   }
   return false;
 };
