@@ -73,7 +73,7 @@ const FormInput = ({
 
 const FormSubmit = ({
   text = "",
-  onClick = (event) => {},
+  onClick = () => {},
   disabled = true,
 }: {
   text?: string;

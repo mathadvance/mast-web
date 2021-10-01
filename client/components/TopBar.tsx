@@ -6,16 +6,12 @@ function TopBar() {
     <div className="w-full mx-auto flex justify-between p-2 border-b border-gray-300 text-lg">
       <NextLink href="/">
         <a>
-          <img
-            src={logoPath}
-            className="h-8 text-blue-600"
-            alt="MAST"
-          />
+          <img src={logoPath} className="h-8 text-blue-600" alt="MAST" />
         </a>
       </NextLink>
       <div className="flex gap-x-1.5">
         <div>
-          <NextLink href="signup">
+          <NextLink href="/signup">
             <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
               Sign Up
             </a>
@@ -23,7 +19,7 @@ function TopBar() {
         </div>
         <div className="text-gray-400">|</div>
         <div>
-          <NextLink href="login">
+          <NextLink href="/login">
             <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
               Log In
             </a>

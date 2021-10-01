@@ -1,4 +1,3 @@
-import nc from "next-connect";
 import database from "@/utils/server/mongodb";
 
 // const options: any = {

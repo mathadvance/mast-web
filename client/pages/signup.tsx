@@ -6,7 +6,7 @@ import {
   FormError,
 } from "@/components/FormComponents";
 import { useState } from "react";
-import { User } from "@/utils/server/User";
+import { User, UserError } from "@/utils/server/User";
 
 function Signup() {
   const [user, setUser] = useState(new User());
@@ -15,16 +15,16 @@ function Signup() {
     const updatedUser: User = user;
     updatedUser[property] = value.toString();
     setUser(updatedUser);
-  }
+  };
   const [error, setError] = useState("");
 
-  const Submit = async (user: User) => {
+  const Submit = async () => {
     setUserProperty("graduation_year", gradYear);
     const res = await fetch("/api/user/signup", {
       method: "POST",
       body: JSON.stringify(user),
     });
-    if (res.status > 300) {
+    if (res.status >= 300) {
       setError(await res.text());
       return;
     }
@@ -44,7 +44,8 @@ function Signup() {
           placeholder="Last Name"
           onChange={(event) => {
             setUserProperty("last_name", event.target.value);
-          }} />
+          }}
+        />
       </div>
       <FormInput
         placeholder="Email Address"
@@ -65,7 +66,9 @@ function Signup() {
         value={gradYear}
         pattern="\d{0,4}"
         onChange={(event) => {
-          setGradYear((gradYear) => (event.target.validity.valid ? event.target.value : gradYear))
+          setGradYear((gradYear) =>
+            event.target.validity.valid ? event.target.value : gradYear
+          );
         }}
       />
       <FormInput
@@ -89,7 +92,9 @@ function Signup() {
       <FormSubmit
         text="Sign Up"
         disabled={false}
-        onClick={() => { Submit; }}
+        onClick={() => {
+          Submit();
+        }}
       />
       <div className="h-10">
         {`Have an account already? `}
