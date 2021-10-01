@@ -9,7 +9,13 @@ export class User {
   username: string;
   password: string;
   roles: string[];
-  // We will not have the user input this; instead, we will just give new users the UNVERIFIED role.
+  // We will not have the user input this; instead, we will just give new users no roles.
+  // The roles are USER, STUDENT, and 
+  // Email-verified accounts get the USER role,
+  // staff-verified accounts get the STUDENT role,
+  // staff get the ADMIN role
+  // current director gets SUPERADMIN role
+  // It is expected that roles are cumulative, i.e. you have all the roles below you
 
   first_name: string;
   last_name: string;

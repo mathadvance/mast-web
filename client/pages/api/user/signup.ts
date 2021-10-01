@@ -3,7 +3,7 @@ import clientPromise from "@/utils/server/mongodb";
 
 export default async (req, res) => {
   const user: User = JSON.parse(req.body);
-  user.roles = ["UNVERIFIED"];
+  user.roles = [];
   if (UserError(user)) {
     const error: string = UserError(user).toString(); // will never be false so this is OK
     res.status(400).send(error);
