@@ -18,6 +18,10 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <ThemeProvider>
+      <Head>
+        <title>MAST</title>
+        <link rel="shortcut icon" type="image/x-icon" href="sail.svg" />
+      </Head>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center">
         {emptyPages.indexOf(lastPath) > -1 ? (
           <Component {...pageProps} />
