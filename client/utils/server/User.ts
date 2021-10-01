@@ -8,7 +8,7 @@ import EmailValidator from "email-validator";
 export class User {
   username: string;
   password: string;
-  role: string; // Will have to do a little data manipulation before feeding this into MongoDB
+  roles: string[];
   // We will not have the user input this; instead, we will just give new users the UNVERIFIED role.
 
   first_name: string;

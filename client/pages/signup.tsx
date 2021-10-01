@@ -5,8 +5,8 @@ import {
   FormSubmit,
   FormError,
 } from "@/components/FormComponents";
-import { ChangeEvent, useState } from "react";
-import { User, UserError } from "@/utils/server/User";
+import { useState } from "react";
+import { User } from "@/utils/server/User";
 
 function Signup() {
   const [user, setUser] = useState(new User());
@@ -17,6 +17,19 @@ function Signup() {
     setUser(updatedUser);
   }
   const [error, setError] = useState("");
+
+  const Submit = async (user: User) => {
+    setUserProperty("graduation_year", gradYear);
+    const res = await fetch("/api/user/signup", {
+      method: "POST",
+      body: JSON.stringify(user),
+    });
+    if (res.status > 300) {
+      setError(await res.text());
+      return;
+    }
+  };
+
   return (
     <FormBox>
       <h1 className="font-normal">Sign Up</h1>
@@ -76,14 +89,7 @@ function Signup() {
       <FormSubmit
         text="Sign Up"
         disabled={false}
-        onClick={() => {
-          setUserProperty("graduation_year", gradYear);
-          if (UserError(user)) {
-            setError(UserError(user).toString()); // use toString even though by definition UserError has to return a string, because Typescript thinks it can be a boolean
-          } else {
-            Submit;
-          }
-        }}
+        onClick={() => { Submit; }}
       />
       <div className="h-10">
         {`Have an account already? `}
@@ -97,12 +103,5 @@ function Signup() {
     </FormBox>
   );
 }
-
-const Submit = async (user: User) => {
-  const res = await fetch("/api/signup", {
-    body: JSON.stringify(user),
-  });
-  return false;
-};
 
 export default Signup;
