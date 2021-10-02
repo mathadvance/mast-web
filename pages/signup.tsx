@@ -6,7 +6,7 @@ import {
   FormError,
 } from "@/components/FormComponents";
 import { useState } from "react";
-import { User, UserError } from "@/utils/server/User";
+import { User } from "@/utils/server/User";
 import router from "next/router";
 
 function Signup() {
