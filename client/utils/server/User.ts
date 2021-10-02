@@ -6,20 +6,23 @@ import EmailValidator from "email-validator";
 // while everything else should go in `customData`.
 
 export class User {
-  username: string;
+  username: string; // createIndex on this when setting up database
+  // https://docs.mongodb.com/manual/reference/method/db.collection.createIndex/#mongodb-method-db.collection.createIndex
   password: string;
-  roles: string[];
+  power: number;
+  // We use @/utils/server/powerToRole.ts to get role name
   // We will not have the user input this; instead, we will just give new users no roles.
-  // The roles are USER, STUDENT, and 
-  // Email-verified accounts get the USER role,
-  // staff-verified accounts get the STUDENT role,
-  // staff get the ADMIN role
-  // current director gets SUPERADMIN role
+
+  // Newly created accounts get the UNVERIFIED (0) role,
+  // Email-verified accounts get the USER (1) role,
+  // staff-verified accounts get the STUDENT (2) role,
+  // staff get the ADMIN (3) role
+  // current director gets SUPERADMIN (4) role
   // It is expected that roles are cumulative, i.e. you have all the roles below you
 
   first_name: string;
   last_name: string;
-  email: string;
+  email: string; // createIndex on this when setting up database/
   graduation_year: number;
 }
 
