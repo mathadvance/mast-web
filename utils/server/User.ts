@@ -61,7 +61,7 @@ export const UserError = (user: User) => {
     return "Your graduation year must be between 1900 and 2100.";
   }
   if (!user.password || user.password.length === 0) {
-    return "You must input a password."
+    return "You must input a password.";
   }
-  return false;
+  return;
 };

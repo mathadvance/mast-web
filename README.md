@@ -25,9 +25,27 @@ This project is using `yarn` as its package manager.
 
 Clone the repository and run `yarn dev`.
 
-It is expected that you make your own database.
+### Server setup
+
+For testing, it is expected that you make your own database.
 You should make a file called `.env.local`
 and put all your environment variables there.
+
+If you create a local Mongo database for testing, which I recommend,
+you will want .env.local to look like this:
+
+    MONGODB_URI=mongodb://dbOwner:2729@localhost:27017/?authSource=mast&readPreference=primary
+    MONGODB_DB=mast
+
+(You can change the value of `MONGODB_DB` if you really wish to do so, but there is not really a good reason to do so. If you do, replace `mast` in the instructions with whatever your database name is.)
+
+After installing `mongodb` locally and starting the mongodb services, run `mongosh` and type the following commands:
+
+    use mast
+    db.createCollection("users")
+    db.users.createIndex({ "username": 1 }, {unique: true})
+    db.createCollection("email_proxy")
+    db.email_proxy.createIndex({ "email": 1 }, { unique: true })
 
 ## Structure
 
