@@ -66,7 +66,9 @@ plus a separate directory for the server.
 - components: Anything that is mostly visual.
   Lines can get a little blurry between components and utils.
 - utils: Anything more complicated than a slew of `<div className="...">`
+  - server: Handles logic on the clientside before it is sent to the server.
 - pages: Doh.
+  - api: Doh. (This is what actually sends stuff to the server.)
 
 ### Server
 
