@@ -7,6 +7,7 @@ import {
 } from "@/components/FormComponents";
 import { useState } from "react";
 import { User, UserError } from "@/utils/server/User";
+import router from "next/router";
 
 function Signup() {
   const [user, setUser] = useState(new User());
@@ -26,6 +27,10 @@ function Signup() {
     });
     if (res.status >= 300) {
       setError(await res.text());
+      return;
+    } else {
+      setError("");
+      router.push("/home");
       return;
     }
   };
@@ -55,7 +60,6 @@ function Signup() {
       />
       <FormInput
         placeholder="Username"
-        value={user.username}
         onChange={(event) => {
           setUserProperty("username", event.target.value);
         }}
