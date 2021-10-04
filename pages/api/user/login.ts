@@ -1,7 +1,7 @@
 import client from "@/utils/server/mongodb";
 import argon2 from "argon2";
 import EmailValidator from "email-validator";
-import { setCookie } from "nookies";
+import cookie from "cookie";
 import sessionKeygen from "@/utils/server/sessionKeygen";
 import redis from "@/utils/server/redis";
 
@@ -41,24 +41,28 @@ export default async (req, res) => {
 
     const SSID = sessionKeygen();
 
-    const cookieObject = JSON.stringify({
+    const cookieString = JSON.stringify({
       SSID,
       regenerate: request.rememberMe,
     });
 
-    const redisValObject = JSON.stringify({
+    const redisValString = JSON.stringify({
       username: request.username,
       timestamp: new Date(),
     });
 
-    setCookie(null, "session", cookieObject, {
-      maxAge,
-      path: "/",
-      httpOnly: true,
-      sameSite: "strict",
-    });
+    res.setHeader(
+      "Set-Cookie",
+      cookie.serialize("session", cookieString, {
+        maxAge,
+        path: "/",
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE_ENV !== "development",
+      })
+    );
 
-    redis.set(SSID, redisValObject, "EX", maxAge);
+    redis.set(SSID, redisValString, "EX", maxAge);
 
     res.status(200).send("Login successful.");
     return;
