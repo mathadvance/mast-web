@@ -6,7 +6,7 @@ import {
   FormError,
 } from "@/components/FormComponents";
 import { useState } from "react";
-import { User } from "@/utils/server/User";
+import { User, UserError } from "@/utils/server/User";
 import router from "next/router";
 
 function Signup() {
@@ -30,6 +30,14 @@ function Signup() {
       return;
     } else {
       setError("");
+      await fetch("/api/user/login", {
+        method: "POST",
+        body: JSON.stringify({
+          username: user.username,
+          password: user.password,
+          rememberMe: false,
+        }),
+      });
       router.push("/home");
       return;
     }
@@ -95,9 +103,12 @@ function Signup() {
       />
       <FormSubmit
         text="Sign Up"
-        disabled={false}
         onClick={() => {
-          Submit();
+          if (UserError(user)) {
+            setError(UserError(user));
+          } else {
+            Submit();
+          }
         }}
       />
       <div className="h-10">

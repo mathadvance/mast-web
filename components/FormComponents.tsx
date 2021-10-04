@@ -74,7 +74,7 @@ const FormInput = ({
 const FormSubmit = ({
   text = "",
   onClick = () => {},
-  disabled = true,
+  disabled = false,
 }: {
   text?: string;
   onClick?: any;
@@ -94,7 +94,7 @@ const FormSubmit = ({
 const FormError = ({ error }: any) => {
   return (
     <>
-      <div className="text-red-500">{error}</div>
+      <div className="text-red-500 text-sm">{error}</div>
     </>
   );
 };

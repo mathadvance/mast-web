@@ -36,6 +36,7 @@ you will want .env.local to look like this:
 
     MONGODB_URI=mongodb://dbOwner:2729@localhost:27017/?authSource=mast&readPreference=primary
     MONGODB_DB=mast
+    REDIS_URI=redis://127.0.0.1:6379/0
 
 (You can change the value of `MONGODB_DB` if you really wish to do so, but there is not really a good reason to do so. If you do, replace `mast` in the instructions with whatever your database name is.)
 
@@ -50,6 +51,8 @@ After installing `mongodb` locally and starting the mongodb services, run `mongo
     db.email_proxy.createIndex({ "email": 1 }, { unique: true })
 
 In production we create a `dbOwner` and require authentication for most operations. But this should not be necessary in local testing.
+
+For `redis` just start up the service. Make a password and add authentication information to `REDIS_URI` in production.
 
 ## Structure
 

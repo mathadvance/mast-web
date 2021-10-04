@@ -5,7 +5,6 @@ import argon2 from "argon2";
 
 export default async (req, res) => {
   const user: User = JSON.parse(req.body);
-  user.power = 0;
 
   if (UserError(user)) {
     const error: string = UserError(user).toString(); // will never be false so this is OK
@@ -41,6 +40,7 @@ export default async (req, res) => {
         // get rid of the creationDate field
         // once a user verifies.
         email: user.email,
+        username: user.username, // makes lookup easier for login
       });
       client.db(process.env.MONGODB_DB).collection("users").insertOne({
         _id: _id,
@@ -52,10 +52,14 @@ export default async (req, res) => {
         username: user.username,
         hashedPassword,
         email: user.email,
-        power: user.power,
+        power: 0,
         first_name: user.first_name,
         last_name: user.last_name,
         graduation_year: user.graduation_year,
+        data: {},
+        earliestAcceptableAuthTimestamp: new Date(),
+        // If a cookie/session timestamp is before this,
+        // then it is invalid.
       });
       res.status(200).send("User successfully created.");
       return;

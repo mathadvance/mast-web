@@ -24,6 +24,9 @@ export class User {
   last_name: string;
   email: string; // createIndex on this when setting up database/
   graduation_year: number;
+
+  earliestAcceptableAuthTimestamp: Date;
+  data: any;
 }
 
 export const UserError = (user: User) => {
@@ -50,6 +53,9 @@ export const UserError = (user: User) => {
   }
   if (!user.username || user.username === "") {
     return "Your username may not be empty.";
+  }
+  if (!/^[A-Za-z0-9\_\-]+$/.test(user.username)) {
+    return "Usernames must be alphanumeric (with hyphens and underscores).";
   }
   if (user.username.indexOf(" ") > -1) {
     return "Your username may not contain any spaces.";

@@ -6,10 +6,7 @@ function Index() {
   // user is not logged in;
   // redirect to Home if user is
   // logged in.
-  return (
-    <div>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default Index;
