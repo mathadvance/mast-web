@@ -9,14 +9,14 @@ import {
 } from "@/components/FormComponents";
 import CheckBox from "@/components/CheckBox";
 
-function Login() {
+export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
   const Submit = async () => {
-    const res = await fetch("/api/user/login", {
+    const res = await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({
         username,
@@ -84,5 +84,3 @@ function Login() {
     </FormBox>
   );
 }
-
-export default Login;

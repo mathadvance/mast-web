@@ -1,6 +1,6 @@
 import client from "@/utils/server/mongodb";
 
-function Index() {
+export default function Index() {
   // what I really want to do
   // is redirect to About if
   // user is not logged in;
@@ -8,8 +8,6 @@ function Index() {
   // logged in.
   return <div></div>;
 }
-
-export default Index;
 
 export async function getServerSideProps(context) {
   return {

@@ -1,18 +1,16 @@
 import Head from "next/head";
 import MDXComponents from "@/utils/MDXComponents";
-import { FC } from "react";
 import { getMDXComponent } from "mdx-bundler/client";
-import React from "react";
+import { useMemo } from "react";
 
-const PageRender: FC<{ props }> = ({ props }) => {
-  const Content = React.useMemo(
-    () => getMDXComponent(props.code),
-    [props.code]
-  );
+function PageRender({ props }) {
+  const Content = useMemo(() => getMDXComponent(props.code), [props.code]);
   return (
     <>
       <Head>
-        <title>{props.data.title ? `${props.data.title} - MAST` : 'MAST'}</title>
+        <title>
+          {props.data.title ? `${props.data.title} - MAST` : "MAST"}
+        </title>
         <link
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.css"
@@ -28,6 +26,6 @@ const PageRender: FC<{ props }> = ({ props }) => {
       <Content components={MDXComponents} />
     </>
   );
-};
+}
 
 export default PageRender;

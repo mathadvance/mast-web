@@ -34,7 +34,7 @@ export default async (req, res) => {
       // because we want to remove the TTL index (creationDate) when a user is verified.
       client.db(process.env.MONGODB_DB).collection("email_proxy").insertOne({
         _id: _id,
-        creationDate: new Date(),
+        creationDate: Date.now(),
         // A little counterintuitive, but creationDate is used
         // to delete unverified users, so we actually want to
         // get rid of the creationDate field
@@ -44,7 +44,7 @@ export default async (req, res) => {
       });
       client.db(process.env.MONGODB_DB).collection("users").insertOne({
         _id: _id,
-        creationDate: new Date(),
+        creationDate: Date.now(),
         // A little counterintuitive, but creationDate is used
         // to delete unverified users, so we actually want to
         // get rid of the creationDate field
@@ -57,7 +57,7 @@ export default async (req, res) => {
         last_name: user.last_name,
         graduation_year: user.graduation_year,
         data: {},
-        earliestAcceptableAuthTimestamp: new Date(),
+        earliestAcceptableAuthTimestamp: Date.now(),
         // If a cookie/session timestamp is before this,
         // then it is invalid.
       });

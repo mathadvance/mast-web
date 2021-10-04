@@ -49,6 +49,7 @@ export default async (req, res) => {
     const redisValString = JSON.stringify({
       username: request.username,
       timestamp: Date.now(),
+      regenerate: request.rememberMe,
     });
 
     res.setHeader(

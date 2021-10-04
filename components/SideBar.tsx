@@ -27,7 +27,7 @@ function SideRow({ needsUser = false, link, label, icon }) {
   );
 }
 
-function SideBar() {
+export default function SideBar() {
   return (
     <div className="grid grid-cols-1 widephone:grid-cols-2 sm:grid-cols-1 gap-y-1.5 bg-pink-100 dark:bg-opacity-25 dark:bg-pink-600 rounded-xl border border-pink-500 p-4">
       <SideRow needsUser link="/home" label="Home" icon={<FaHome />} />
@@ -47,5 +47,3 @@ function SideBar() {
     </div>
   );
 }
-
-export default SideBar;

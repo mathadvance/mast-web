@@ -1,9 +1,9 @@
-import React from "react";
+import { createContext, useState, useEffect } from "react";
 
-const ThemeContext = React.createContext(undefined);
+const ThemeContext = createContext<{ theme: string }>({ theme: null });
 
-const ThemeProvider: React.FC<{}> = ({ children }) => {
-  const [theme, rawSetTheme] = React.useState();
+export default function ThemeProvider({ children }) {
+  const [theme, rawSetTheme] = useState();
 
   // setTheme adds or removes dark to classList appropriately
   const setTheme = (theme) => {
@@ -22,16 +22,12 @@ const ThemeProvider: React.FC<{}> = ({ children }) => {
       : "light";
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     // add check for user option later
     setTheme(getOSTheme());
   });
 
   return (
-    <ThemeContext.Provider value={{ theme, rawSetTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <ThemeContext.Provider value={{ theme }}>{children}</ThemeContext.Provider>
   );
-};
-
-export default ThemeProvider;
+}

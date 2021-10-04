@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import { logoPath } from "@/utils/paths";
 
-function TopBar() {
+export default function TopBar() {
   return (
     <div className="w-full mx-auto flex justify-between p-2 border-b border-gray-300 text-lg">
       <NextLink href="/">
@@ -29,5 +29,3 @@ function TopBar() {
     </div>
   );
 }
-
-export default TopBar;

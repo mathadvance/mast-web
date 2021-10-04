@@ -9,7 +9,7 @@ import { useState } from "react";
 import { User, UserError } from "@/utils/server/User";
 import router from "next/router";
 
-function Signup() {
+export default function Signup() {
   const [user, setUser] = useState(new User());
   const [gradYear, setGradYear] = useState("");
   const setUserProperty = (property: string, value: string | number) => {
@@ -21,7 +21,7 @@ function Signup() {
 
   const Submit = async () => {
     setUserProperty("graduation_year", gradYear);
-    const res = await fetch("/api/user/signup", {
+    const res = await fetch("/api/signup", {
       method: "POST",
       body: JSON.stringify(user),
     });
@@ -30,7 +30,7 @@ function Signup() {
       return;
     } else {
       setError("");
-      await fetch("/api/user/login", {
+      await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({
           username: user.username,
@@ -123,5 +123,3 @@ function Signup() {
     </FormBox>
   );
 }
-
-export default Signup;
