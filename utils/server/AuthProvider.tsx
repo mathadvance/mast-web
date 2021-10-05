@@ -7,7 +7,7 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   useEffect(() => {
     async () => {
-      const res = await fetch("/api/auth");
+      const reader = await fetch("/api/auth")
     };
   });
   return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;

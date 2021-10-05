@@ -27,6 +27,12 @@ export class User {
 
   earliestAcceptableAuthTimestamp: Date;
   data: any;
+
+  constructor(userObject = {}) {
+    for (const prop in userObject) {
+      this[prop] = userObject[prop];
+    }
+  }
 }
 
 export const UserError = (user: User) => {

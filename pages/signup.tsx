@@ -30,7 +30,7 @@ export default function Signup() {
       return;
     } else {
       setError("");
-      await fetch("/api/login", {
+      fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({
           username: user.username,
