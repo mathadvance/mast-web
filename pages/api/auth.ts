@@ -32,7 +32,7 @@ export default async (req, res) => {
       } else {
         if (
           new Date(Date.now()) >
-            new Date(redisTimestamp.getTime() + 1000 * 60 * 60) &&
+          new Date(redisTimestamp.getTime() + 1000 * 60 * 60) &&
           redisValObject.regenerate
         ) {
           if (!sessionObject.regenerate) {
@@ -75,7 +75,7 @@ export default async (req, res) => {
           redis.set(sessionID, redisValString, "EX", maxAge);
         }
         // otherwise, don't refresh token
-        res.status(200).json(user);
+        res.status(200).json(JSON.stringify(user));
         return;
       }
     }
