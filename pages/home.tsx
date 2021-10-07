@@ -11,7 +11,7 @@ export default function Home() {
     if (!user && !loading) {
       router.push("/about");
     }
-  }, []);
+  }, [loading]);
 
   if (!user) {
     return (
