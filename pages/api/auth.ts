@@ -63,16 +63,11 @@ const Auth = async (req, res) => {
       }
     }
   } else {
+    cookies.set("session");
+    redis.del(session);
     res.status(200).send(null);
     return;
   }
 };
-
-// Auth.getServerSideProps = ({ req, res }) => {
-//   const cookies = new Cookies(req, res)
-//   // const status = cookies.get("session");
-//   const status = "oops"
-//   return status;
-// }
 
 export default Auth;
