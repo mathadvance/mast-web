@@ -5,13 +5,14 @@ import { useEffect } from "react";
 import { FormSubmit } from "@/components/FormComponents"
 
 export default function Home() {
-  const user = useAuth();
+  const { user, loading } = useAuth();
 
   useEffect(() => {
-    if (!user) {
-      // router.push("/about");
+    if (!user && !loading) {
+      router.push("/about");
     }
-  }, user)
+  }, []);
+
   if (!user) {
     return (
       <>

@@ -4,7 +4,7 @@ import { useAuth } from "@/utils/server/AuthProvider";
 import { FaDoorOpen } from "react-icons/fa";
 
 export default function TopBar() {
-  const user = useAuth();
+  const { user } = useAuth();
   return (
     <div className="w-full mx-auto flex justify-between p-2 border-b border-gray-300 text-lg">
       <NextLink href="/">

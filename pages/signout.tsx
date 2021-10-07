@@ -3,7 +3,7 @@ import { useAuth } from "@/utils/server/AuthProvider";
 import { useEffect } from "react";
 
 export default function Logout() {
-  const user = useAuth();
+  const { user } = useAuth();
   useEffect(() => {
     if (!user) {
       router.push("/");
@@ -18,5 +18,8 @@ export default function Logout() {
       router.push("/about");
     })();
   }, [user]);
-  return null;
+  return <>
+    <h1>Redirecting...</h1>
+    <p>You are being taken to the About page.</p>
+  </>;
 }

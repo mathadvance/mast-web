@@ -18,10 +18,11 @@ function SideRow({ needsUser = false, link, label, icon }) {
 
   if (needsUser) {
     // do some checking
-    const user = useAuth();
+    const { user } = useAuth();
     if (!user)
       return null;
   }
+
   return (
     <NextLink href={link}>
       <a className="flex gap-x-2 items-center pink-link">
