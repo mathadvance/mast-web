@@ -2,14 +2,17 @@ import { useAuth } from "@/utils/server/AuthProvider";
 import { powerToRole } from "@/utils/server/powerToRole";
 import router from "next/router";
 import { useEffect } from "react";
+import { FormSubmit } from "@/components/FormComponents"
 
-export default function Home({ user }) {
+export default function Home() {
+  const user = useAuth();
+
   useEffect(() => {
-    if (!user.username) {
+    if (!user) {
       // router.push("/about");
     }
   }, user)
-  if (!user.username) {
+  if (!user) {
     return (
       <>
         <h1>Redirecting...</h1>
@@ -20,7 +23,14 @@ export default function Home({ user }) {
   const roleName = powerToRole(user.power);
 
   function User() {
-    return <></>
+    return (
+      <div className="space-y-4">
+        <p>
+          Please verify your account through your email address <em>({user.email})</em>.
+        </p>
+        <FormSubmit text="Resend Verification Email" />
+      </div>
+    );
   }
 
   function Applicant() {
@@ -62,15 +72,8 @@ export default function Home({ user }) {
 
   return (
     <>
-      <p>Greetings, {user.first_name}. Your current role is {roleName}.</p>
+      <p>Greetings, <em>{user.first_name}</em>. Your current role is <em>{roleName}</em>.</p>
       <RenderRole />
     </>
   );
-}
-
-export async function getServerSideProps(context) {
-  const user = await ("/api/auth")
-  return {
-    props: { user },
-  };
 }

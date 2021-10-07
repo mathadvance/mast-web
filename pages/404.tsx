@@ -7,7 +7,7 @@ export default function Error404() {
       <p>
         {`This URL does not exist. `}
         <NextLink href="/">
-          <a className="text-blue-600 hover:text-blue-500 hover:underline">
+          <a className="blue-link">
             Return to the homepage?
           </a>
         </NextLink>

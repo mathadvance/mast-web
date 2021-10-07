@@ -16,7 +16,7 @@
     @apply text-xl font-bold;
   }
   em {
-    @apply text-pink-800 dark:text-pink-500 font-bold;
+    @apply text-pink-800 dark:text-pink-500 not-italic font-bold;
   }
   ul {
     @apply list-outside list-disc pl-4 space-y-1;
@@ -38,6 +38,15 @@
   }
   [role="doc-endnotes"] {
     @apply space-y-2;
+  }
+}
+
+@layer components {
+  .blue-link {
+    @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline;
+  }
+  .pink-link {
+    @apply text-pink-700 hover:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 hover:underline
   }
 }
 

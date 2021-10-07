@@ -1,5 +1,7 @@
 import NextLink from "next/link";
 
+import { useAuth } from "@/utils/server/AuthProvider";
+
 import {
   FaHome,
   FaCog,
@@ -13,13 +15,16 @@ import {
 } from "react-icons/fa";
 
 function SideRow({ needsUser = false, link, label, icon }) {
+
   if (needsUser) {
     // do some checking
-    return null;
+    const user = useAuth();
+    if (!user)
+      return null;
   }
   return (
     <NextLink href={link}>
-      <a className="flex gap-x-2 items-center text-pink-700 hover:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 hover:underline">
+      <a className="flex gap-x-2 items-center pink-link">
         <div className="text-lg">{icon}</div>
         <div>{label}</div>
       </a>

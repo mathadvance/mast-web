@@ -66,14 +66,14 @@ export default function Login() {
       <div className="h-10">
         <div className="flex justify-between">
           <NextLink href="forgot-password">
-            <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
+            <a className="blue-link">
               Forgot password?
             </a>
           </NextLink>
           <div>
             {`Don't have an account? `}
             <NextLink href="signup">
-              <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
+              <a className="blue-link">
                 Create one.
               </a>
             </NextLink>

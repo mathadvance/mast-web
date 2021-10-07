@@ -1,7 +1,7 @@
 import client from "@/utils/server/mongodb";
 import argon2 from "argon2";
 import EmailValidator from "email-validator";
-import cookie from "cookie";
+import Cookies from "cookies";
 import sessionKeygen from "@/utils/server/sessionKeygen";
 import redis from "@/utils/server/redis";
 
@@ -41,27 +41,15 @@ export default async (req, res) => {
 
     const sessionID = sessionKeygen();
 
-    const cookieString = JSON.stringify({
-      sessionID,
-      regenerate: request.rememberMe,
-    });
-
     const redisValString = JSON.stringify({
       username: request.username,
       timestamp: Date.now(),
       regenerate: request.rememberMe,
     });
 
-    res.setHeader(
-      "Set-Cookie",
-      cookie.serialize("session", cookieString, {
-        maxAge,
-        path: "/",
-        httpOnly: true,
-        sameSite: "strict",
-        secure: process.env.NODE_ENV !== "development",
-      })
-    );
+    const cookies = new Cookies(req, res);
+
+    cookies.set("session", sessionID);
 
     redis.set(sessionID, redisValString, "EX", maxAge);
 

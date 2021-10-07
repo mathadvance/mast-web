@@ -90,7 +90,7 @@ export default function Signup() {
           <>
             It is recommended you use a{` `}
             <NextLink href="https://baekdal.com/thoughts/password-security-usability/">
-              <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
+              <a className="blue-link">
                 string of words
               </a>
             </NextLink>
@@ -114,7 +114,7 @@ export default function Signup() {
       <div className="h-10">
         {`Have an account already? `}
         <NextLink href="login">
-          <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
+          <a className="blue-link">
             Log in.
           </a>
         </NextLink>
