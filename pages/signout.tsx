@@ -1,12 +1,22 @@
 import router from "next/router";
+import { useAuth } from "@/utils/server/AuthProvider";
+import { useEffect } from "react";
 
 export default function Logout() {
-  fetch("/api/signout",
-    {
-      method: "POST",
-      credentials: "include",
+  const user = useAuth();
+  useEffect(() => {
+    if (!user) {
+      router.push("/");
     }
-  );
-  router.push("/about");
+    (async () => {
+      fetch("/api/signout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
+      router.push("/about");
+    })();
+  }, [user]);
   return null;
 }

@@ -49,7 +49,9 @@ export default async (req, res) => {
 
     const cookies = new Cookies(req, res);
 
-    cookies.set("session", sessionID);
+    cookies.set("session", sessionID, {
+      maxAge: maxAge
+    });
 
     redis.set(sessionID, redisValString, "EX", maxAge);
 
