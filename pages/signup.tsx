@@ -38,6 +38,10 @@ export default function Signup() {
           rememberMe: false,
         }),
       });
+      fetch("/api/auth", {
+        method: "POST",
+        credentials: "include",
+      })
       router.push("/home");
       return;
     }

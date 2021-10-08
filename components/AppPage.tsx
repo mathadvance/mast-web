@@ -7,18 +7,13 @@ import { useAuth } from "@/contexts/AuthProvider";
 
 import Loading from "@/components/Loading"
 import { useEffect } from "react";
-import { route } from "next/dist/server/router";
 
 export default function AppPage({ children }) {
     const { asPath } = useRouter();
     const paths = asPath.split("/");
     const lastPath = paths[paths.length - 1];
 
-    const protectedPages = ["", "home", "settings"];
-    const antiProtectedPages = ["", "login", "signup"];
-
-    const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1;
-    const isAntiProtectedPage: boolean = antiProtectedPages.indexOf(lastPath) > -1;
+    const noStylePages = ["", "login", "signup"];
 
     // We choose to make index both protected and anti-protected
     // because we never want it to render.
@@ -26,25 +21,14 @@ export default function AppPage({ children }) {
     // Anti-protected pages also usually deal with auth (except index)
     // so they should not have sidebar, topbar, etc
 
-    const { user, loading } = useAuth();
-
-    useEffect(() => {
-        (async () => {
-            if (!loading && !user && isProtectedPage) {
-                router.push("/about");
-            }
-            if (!loading && user && isAntiProtectedPage) {
-                router.push("/home");
-            }
-        })();
-    }, [loading, asPath])
+    const { loading } = useAuth();
 
     if (loading) {
         return <Loading />
     }
 
     return <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center">
-        {isAntiProtectedPage ? (
+        {noStylePages.indexOf(lastPath) > -1 ? (
             <>{children}</>
         ) : (
             <div className="px-12 py-6 w-full max-w-screen-lg">

@@ -8,15 +8,13 @@ export default function Logout() {
     if (!user) {
       router.push("/");
     }
-    (async () => {
-      fetch("/api/signout",
-        {
-          method: "POST",
-          credentials: "include",
-        }
-      );
-      router.push("/about");
-    })();
+    fetch("/api/signout",
+      {
+        method: "POST",
+        credentials: "include",
+      }
+    );
+    router.push("/about");
   }, [user]);
   return <>
     <h1>Redirecting...</h1>
