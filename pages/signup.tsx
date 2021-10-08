@@ -38,10 +38,13 @@ export default function Signup() {
           rememberMe: false,
         }),
       });
-      fetch("/api/auth", {
+      const userRes = await fetch("/api/auth", {
         method: "POST",
         credentials: "include",
       })
+      const userJSON = await userRes.text()
+      const AuthedUser = new User(JSON.parse(userJSON));
+      setUser(AuthedUser);
       router.push("/home");
       return;
     }

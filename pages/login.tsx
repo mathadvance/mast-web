@@ -8,12 +8,15 @@ import {
   FormError,
 } from "@/components/FormComponents";
 import CheckBox from "@/components/CheckBox";
+import { useAuth } from "@/contexts/AuthProvider";
+import { User } from "@/utils/server/User";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const { setUser } = useAuth();
 
   const Submit = async () => {
     const res = await fetch("/api/login", {
@@ -29,6 +32,13 @@ export default function Login() {
       return;
     } else {
       setError("");
+      const userRes = await fetch("/api/auth", {
+        method: "POST",
+        credentials: "include",
+      })
+      const userJSON = await userRes.text()
+      const user = new User(JSON.parse(userJSON));
+      setUser(user);
       router.push("/home");
       return;
     }

@@ -20,20 +20,6 @@ export default function AuthProvider({ children }) {
   const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1;
   const isAntiProtectedPage: boolean = antiProtectedPages.indexOf(lastPath) > -1;
 
-  const getUser = async () => {
-    const res = await fetch("/api/auth", {
-      method: "POST",
-      credentials: "include",
-    })
-    const fetchedUserText = await res.text();
-    if (fetchedUserText) {
-      const fetchedUserObject = JSON.parse(fetchedUserText);
-      const fetchedUser: User = new User(fetchedUserObject);
-      setUser(fetchedUser);
-    }
-    setLoading(false);
-  };
-
   useEffect(() => {
     if (!loading && !user && isProtectedPage) {
       router.push("/about");
@@ -43,20 +29,26 @@ export default function AuthProvider({ children }) {
     }
   }, [loading, asPath])
 
-  // Make signout update properly
   useEffect(() => {
-    if (lastPath == "signout") {
-      setUser(undefined);
-    }
-  }, [lastPath == "signout"])
-
-  useEffect(() => {
-    getUser();
+    (async () => {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        credentials: "include",
+      })
+      const fetchedUserText = await res.text();
+      if (fetchedUserText) {
+        const fetchedUserObject = JSON.parse(fetchedUserText);
+        const fetchedUser: User = new User(fetchedUserObject);
+        setUser(fetchedUser);
+      }
+      setLoading(false);
+    })();
   }, [user]);
 
   return <AuthContext.Provider value={
     {
       user,
+      setUser,
       loading
     }
   }>{children}</AuthContext.Provider>;
