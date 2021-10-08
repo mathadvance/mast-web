@@ -1,5 +1,5 @@
 import router from "next/router";
-import { useAuth } from "@/utils/server/AuthProvider";
+import { useAuth } from "@/contexts/AuthProvider";
 import { useEffect } from "react";
 
 export default function Logout() {

@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 import { logoPath } from "@/utils/paths";
-import { useAuth } from "@/utils/server/AuthProvider";
+import { useAuth } from "@/contexts/AuthProvider";
 import { FaDoorOpen } from "react-icons/fa";
 
 export default function TopBar() {

@@ -48,7 +48,7 @@ const Auth = async (req, res) => {
           const maxAge = 60 * 60 * 24 * 30;
 
           cookies.set("session", session, {
-            maxAge,
+            maxAge: Date.now() + maxAge,
             path: "/",
             httpOnly: true,
             sameSite: "strict",

@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 
-import { useAuth } from "@/utils/server/AuthProvider";
+import { useAuth } from "@/contexts/AuthProvider";
 
 import {
   FaHome,
@@ -13,14 +13,17 @@ import {
   FaFileAlt,
   FaDoorOpen,
 } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 function SideRow({ needsUser = false, link, label, icon }) {
 
-  if (needsUser) {
-    // do some checking
-    const { user } = useAuth();
-    if (!user)
-      return null;
+  const { asPath } = useRouter();
+
+  const { user } = useAuth();
+
+  if (needsUser && !user) {
+    return null;
   }
 
   return (

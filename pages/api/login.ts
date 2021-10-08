@@ -50,7 +50,11 @@ export default async (req, res) => {
     const cookies = new Cookies(req, res);
 
     cookies.set("session", sessionID, {
-
+      maxAge: Date.now() + maxAge,
+      path: "/",
+      httpOnly: true,
+      sameSite: "strict",
+      secure: process.env.NODE_ENV !== "development",
     });
 
     redis.set(sessionID, redisValString, "EX", maxAge);

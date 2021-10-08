@@ -3,7 +3,7 @@ import router, { useRouter } from "next/router";
 import TopBar from "@/components/TopBar";
 import SideBar from "@/components/SideBar";
 
-import { useAuth } from "@/utils/server/AuthProvider";
+import { useAuth } from "@/contexts/AuthProvider";
 
 import Loading from "@/components/Loading"
 import { useEffect } from "react";

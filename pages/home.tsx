@@ -1,7 +1,5 @@
-import { useAuth } from "@/utils/server/AuthProvider";
+import { useAuth } from "@/contexts/AuthProvider";
 import { powerToRole } from "@/utils/server/powerToRole";
-import router from "next/router";
-import { useEffect } from "react";
 import { FormSubmit } from "@/components/FormComponents"
 
 export default function Home() {

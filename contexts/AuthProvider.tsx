@@ -1,11 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { User } from "./User";
+import { User } from "@/utils/server/User";
 
 const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
-  const { asPath } = useRouter();
   const [user, setUser] = useState(undefined);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -23,7 +21,7 @@ export default function AuthProvider({ children }) {
       setLoading(false);
     }
     )();
-  });
+  }, []);
   return <AuthContext.Provider value={
     {
       user,

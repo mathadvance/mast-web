@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-import ThemeProvider from "@/utils/ThemeProvider";
-import AuthProvider from "@/utils/server/AuthProvider";
+import ThemeProvider from "@/contexts/ThemeProvider";
+import AuthProvider from "@/contexts/AuthProvider";
 
 import "@/styles/global.css";
 import AppPage from "@/components/AppPage";
