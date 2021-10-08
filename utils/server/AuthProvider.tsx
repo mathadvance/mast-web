@@ -18,9 +18,9 @@ export default function AuthProvider({ children }) {
         const fetchedUser: User = new User(fetchedUserObject);
         setUser(fetchedUser);
       }
+      setLoading(false);
     }
     )();
-    setLoading(false);
   }, []);
   return <AuthContext.Provider value={
     {
