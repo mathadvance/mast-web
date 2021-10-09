@@ -18,7 +18,10 @@ const Auth = async (req, res) => {
       const user = await client
         .db(process.env.MONGODB_DB)
         .collection("users")
-        .findOne({ username: { $eq: redisValObject.username } }, { projection: { password: 0 } });
+        .findOne(
+          { username: { $eq: redisValObject.username } },
+          { projection: { password: 0 } }
+        );
       // projection filters out the password
       const redisTimestamp = new Date(redisValObject.timestamp);
       const redisLastRegenerated = new Date(redisValObject.lastRegenerated);
@@ -26,14 +29,14 @@ const Auth = async (req, res) => {
       // also logout (i.e. delete session on client and serverside)
       // if earliestAcceptableAuthTimestamp is greater than
       // timestamp for this current session ID.
-      if (redisTimestamp < user.earliestAcceptableAuthTimestamp) {
+      if (redisTimestamp < user.TimeStamps.earliestAcceptableAuthTimestamp) {
         fetch("api/logout");
         res.status(200).send(null);
         return;
       } else {
         if (
           new Date(Date.now()) >
-          new Date(redisLastRegenerated.getTime() + 1000 * 60 * 60) &&
+            new Date(redisLastRegenerated.getTime() + 1000 * 60 * 60) &&
           redisValObject.regenerate
         ) {
           // if it's an hour past when we set the token,

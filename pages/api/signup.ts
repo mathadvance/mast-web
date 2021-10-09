@@ -57,7 +57,9 @@ export default async (req, res) => {
           last_name: user.last_name,
           graduation_year: user.graduation_year,
           data: {},
-          earliestAcceptableAuthTimestamp: Date.now(),
+          TimeStamps: {
+            earliestAcceptableAuthTimestamp: Date.now(),
+          },
           // If a cookie/session timestamp is before this,
           // then it is invalid.
         });

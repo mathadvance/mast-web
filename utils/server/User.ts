@@ -25,7 +25,9 @@ export class User {
   email: string; // createIndex on this when setting up database/
   graduation_year: number;
 
-  earliestAcceptableAuthTimestamp: Date;
+  TimeStamps: TimeStamps; // contains earliestAcceptableAuthTimestamp
+  // we don't put creation date here because creation date exists only for us
+  // to destroy user objects
   data: any;
 
   constructor(userObject = {}) {
@@ -33,6 +35,10 @@ export class User {
       this[prop] = userObject[prop];
     }
   }
+}
+
+export class TimeStamps {
+  earliestAcceptableAuthTimestamp: Date;
 }
 
 export const UserError = (user: User) => {

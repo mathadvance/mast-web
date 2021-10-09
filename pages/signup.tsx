@@ -39,13 +39,10 @@ export default function Signup() {
         }),
       });
       if (loginRes.status < 300) {
-        const userRes = await fetch("/api/auth", {
+        await fetch("/api/auth", {
           method: "POST",
           credentials: "include",
         });
-        const userJSON = await userRes.text();
-        const AuthedUser = new User(JSON.parse(userJSON));
-        setUser(AuthedUser);
       }
       router.push("/home");
       return;
