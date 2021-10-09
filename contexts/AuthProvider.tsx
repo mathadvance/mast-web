@@ -6,7 +6,6 @@ import router, { useRouter } from "next/router";
 const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
-
   const [user, setUser] = useState(undefined);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +17,8 @@ export default function AuthProvider({ children }) {
   const antiProtectedPages = ["", "login", "signup"];
 
   const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1;
-  const isAntiProtectedPage: boolean = antiProtectedPages.indexOf(lastPath) > -1;
+  const isAntiProtectedPage: boolean =
+    antiProtectedPages.indexOf(lastPath) > -1;
 
   useEffect(() => {
     if (!loading && !user && isProtectedPage) {
@@ -27,14 +27,14 @@ export default function AuthProvider({ children }) {
     if (!loading && user && isAntiProtectedPage) {
       router.push("/home");
     }
-  }, [loading, asPath])
+  }, [loading, asPath]);
 
   useEffect(() => {
     (async () => {
       const res = await fetch("/api/auth", {
         method: "POST",
         credentials: "include",
-      })
+      });
       const fetchedUserText = await res.text();
       if (fetchedUserText) {
         const fetchedUserObject = JSON.parse(fetchedUserText);
@@ -43,15 +43,19 @@ export default function AuthProvider({ children }) {
       }
       setLoading(false);
     })();
-  }, [user]);
+  }, []);
 
-  return <AuthContext.Provider value={
-    {
-      user,
-      setUser,
-      loading
-    }
-  }>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        setUser,
+        loading,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 export const useAuth = () => {
