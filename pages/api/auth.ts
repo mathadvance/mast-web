@@ -20,9 +20,9 @@ const Auth = async (req, res) => {
         .collection("users")
         .findOne(
           { username: { $eq: redisValObject.username } },
-          { projection: { password: 0 } }
+          { projection: { hashedPassword: 0 } }
         );
-      // projection filters out the password
+      // projection filters out the hashed password
       const redisTimestamp = new Date(redisValObject.timestamp);
       const redisLastRegenerated = new Date(redisValObject.lastRegenerated);
       // timestamp checks; regenerate cookies if appropriate
