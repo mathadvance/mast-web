@@ -15,7 +15,7 @@ export default function AuthProvider({ children }) {
   const lastPath = paths[paths.length - 1];
 
   const protectedPages = ["", "home", "settings"];
-  const antiProtectedPages = ["", "login", "signup", "signout"];
+  const antiProtectedPages = ["", "login", "signup"];
 
   const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1;
   const isAntiProtectedPage: boolean = antiProtectedPages.indexOf(lastPath) > -1;
