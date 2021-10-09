@@ -1,33 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { User } from "@/utils/server/User";
-
-import router, { useRouter } from "next/router";
-
 const AuthContext = createContext(null);
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(undefined);
   const [loading, setLoading] = useState(true);
-
-  const { asPath } = useRouter();
-  const paths = asPath.split("/");
-  const lastPath = paths[paths.length - 1];
-
-  const protectedPages = ["", "home", "settings"];
-  const antiProtectedPages = ["", "login", "signup"];
-
-  const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1;
-  const isAntiProtectedPage: boolean =
-    antiProtectedPages.indexOf(lastPath) > -1;
-
-  useEffect(() => {
-    if (!loading && !user && isProtectedPage) {
-      router.push("/about");
-    }
-    if (!loading && user && isAntiProtectedPage) {
-      router.push("/home");
-    }
-  }, [loading, asPath]);
 
   useEffect(() => {
     (async () => {

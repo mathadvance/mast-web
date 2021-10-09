@@ -5,14 +5,6 @@ import { FormSubmit } from "@/components/FormComponents";
 export default function Home() {
   const { user } = useAuth();
 
-  if (!user) {
-    return (
-      <>
-        <h1>Redirecting...</h1>
-        <p>Since you aren't logged in, you will be taken to the About page.</p>
-      </>
-    );
-  }
   const roleName = powerToRole(user.power);
 
   function User() {
