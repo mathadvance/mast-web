@@ -27,9 +27,9 @@ const Auth = async (req, res) => {
       const redisLastRegenerated = new Date(redisValObject.lastRegenerated);
       // timestamp checks; regenerate cookies if appropriate
       // also logout (i.e. delete session on client and serverside)
-      // if earliestAcceptableAuthTimestamp is greater than
+      // if earliest_acceptable_auth_timestamp is greater than
       // timestamp for this current session ID.
-      if (redisTimestamp < user.TimeStamps.earliestAcceptableAuthTimestamp) {
+      if (redisTimestamp < user.Timestamps.earliest_acceptable_auth_timestamp) {
         fetch("api/logout");
         res.status(200).send(null);
         return;

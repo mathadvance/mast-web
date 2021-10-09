@@ -25,9 +25,10 @@ export class User {
   email: string; // createIndex on this when setting up database/
   graduation_year: number;
 
-  TimeStamps: TimeStamps; // contains earliestAcceptableAuthTimestamp
+  Timestamps: Timestamps; // contains earliest_acceptable_auth_timestamp
   // we don't put creation date here because creation date exists only for us
   // to destroy user objects
+  Settings: Settings;
   data: any;
 
   constructor(userObject = {}) {
@@ -37,8 +38,12 @@ export class User {
   }
 }
 
-export class TimeStamps {
-  earliestAcceptableAuthTimestamp: Date;
+export class Timestamps {
+  earliest_acceptable_auth_timestamp: Date;
+}
+
+export class Settings {
+  theme_preference: string;
 }
 
 export const UserError = (user: User) => {

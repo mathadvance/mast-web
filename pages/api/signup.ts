@@ -56,12 +56,15 @@ export default async (req, res) => {
           first_name: user.first_name,
           last_name: user.last_name,
           graduation_year: user.graduation_year,
-          data: {},
-          TimeStamps: {
-            earliestAcceptableAuthTimestamp: Date.now(),
+          Timestamps: {
+            earliest_acceptable_auth_timestamp: Date.now(),
           },
           // If a cookie/session timestamp is before this,
           // then it is invalid.
+          Settings: {
+            theme_preference: "browser",
+          },
+          data: {},
         });
       res.status(200).send("User successfully created.");
       return;
