@@ -37,33 +37,30 @@ export default async (req, res) => {
         .collection("email_proxy")
         .insertOne({
           _id: _id,
-          creationDate: new Date(Date.now()),
-          // A little counterintuitive, but creationDate is used
-          // to delete unverified users, so we actually want to
-          // get rid of the creationDate field
-          // once a user verifies.
+          destructionDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 14),
+          // Delete 14 days from now
           email: user.email,
           username: user.username, // makes lookup easier for login
         });
-      client.db(process.env.MONGODB_DB).collection("users").insertOne({
-        _id: _id,
-        creationDate: Date.now(),
-        // A little counterintuitive, but creationDate is used
-        // to delete unverified users, so we actually want to
-        // get rid of the creationDate field
-        // once a user verifies.
-        username: user.username,
-        hashedPassword,
-        email: user.email,
-        power: 0,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        graduation_year: user.graduation_year,
-        data: {},
-        earliestAcceptableAuthTimestamp: Date.now(),
-        // If a cookie/session timestamp is before this,
-        // then it is invalid.
-      });
+      client
+        .db(process.env.MONGODB_DB)
+        .collection("users")
+        .insertOne({
+          _id: _id,
+          destructionDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 14),
+          // Delete 14 days from now
+          username: user.username,
+          hashedPassword,
+          email: user.email,
+          power: 0,
+          first_name: user.first_name,
+          last_name: user.last_name,
+          graduation_year: user.graduation_year,
+          data: {},
+          earliestAcceptableAuthTimestamp: Date.now(),
+          // If a cookie/session timestamp is before this,
+          // then it is invalid.
+        });
       res.status(200).send("User successfully created.");
       return;
     } else if (matching_emails) {

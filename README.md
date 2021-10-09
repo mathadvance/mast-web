@@ -46,10 +46,10 @@ After installing `mongodb` locally and starting the mongodb services, run `mongo
 
     use mast
     db.createCollection("users")
-    db.users.createIndex( { "destructionDate": 1 } )
+    db.users.createIndex( { "destructionDate": 1 }, { expireAfterSeconds: 0 } )
     db.users.createIndex({ "username": 1 }, {unique: true})
     db.createCollection("email_proxy")
-    db.email_proxy.createIndex( { "creationDate": 1 }, { expireAfterSeconds: 60*60*24*7*2 } )
+    db.email_proxy.createIndex( { "destructionDate": 1 }, { expireAfterSeconds: 0 } )
     db.email_proxy.createIndex({ "email": 1 }, { unique: true })
 
 In production we create a `dbOwner` user and require authentication for most operations. But this should not be necessary in local testing.
