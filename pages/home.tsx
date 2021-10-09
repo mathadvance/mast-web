@@ -73,7 +73,7 @@ export default function Home() {
   return (
     <>
       <p>
-        Greetings, <em>{user.first_name}</em>. Your current role is{" "}
+        Greetings, <em>{user.first_name}</em>. Your account role is{" "}
         <em>{roleName}</em>.
       </p>
       <RenderRole />
