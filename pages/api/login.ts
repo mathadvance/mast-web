@@ -45,6 +45,7 @@ export default async (req, res) => {
       username: request.username,
       timestamp: Date.now(),
       regenerate: request.rememberMe,
+      lastRegenerated: Date.now()
     });
 
     const cookies = new Cookies(req, res);

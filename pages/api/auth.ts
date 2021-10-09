@@ -21,6 +21,7 @@ const Auth = async (req, res) => {
         .findOne({ username: { $eq: redisValObject.username } }, { projection: { password: 0 } });
       // projection filters out the password
       const redisTimestamp = new Date(redisValObject.timestamp);
+      const redisLastRegenerated = new Date(redisValObject.lastRegenerated);
       // timestamp checks; regenerate cookies if appropriate
       // also logout (i.e. delete session on client and serverside)
       // if earliestAcceptableAuthTimestamp is greater than
@@ -32,7 +33,7 @@ const Auth = async (req, res) => {
       } else {
         if (
           new Date(Date.now()) >
-          new Date(redisTimestamp.getTime() + 1000 * 60 * 60) &&
+          new Date(redisLastRegenerated.getTime() + 1000 * 60 * 60) &&
           redisValObject.regenerate
         ) {
           // if it's an hour past when we set the token,
@@ -43,6 +44,7 @@ const Auth = async (req, res) => {
             username: user.username,
             timestamp: redisTimestamp,
             regenerate: true,
+            lastRegenerated: Date.now(),
           });
 
           const maxAge = 60 * 60 * 24 * 30;
