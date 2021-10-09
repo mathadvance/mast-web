@@ -8,14 +8,17 @@ import {
 import { useState } from "react";
 import { User, UserError } from "@/utils/server/User";
 import router from "next/router";
+import { useAuth } from "@/contexts/AuthProvider";
 
 export default function Signup() {
-  const [user, setUser] = useState(new User());
+  const { setUser } = useAuth();
+
+  const [newUser, setNewUser] = useState(new User());
   const [gradYear, setGradYear] = useState("");
   const setUserProperty = (property: string, value: string | number) => {
-    const updatedUser: User = user;
+    const updatedUser: User = newUser;
     updatedUser[property] = value.toString();
-    setUser(updatedUser);
+    setNewUser(updatedUser);
   };
   const [error, setError] = useState("");
 
@@ -23,27 +26,28 @@ export default function Signup() {
     setUserProperty("graduation_year", gradYear);
     const res = await fetch("/api/signup", {
       method: "POST",
-      body: JSON.stringify(user),
+      body: JSON.stringify(newUser),
     });
     if (res.status >= 300) {
       setError(await res.text());
       return;
     } else {
       setError("");
-      const loginRes = await fetch("/api/login", {
+      await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({
-          username: user.username,
-          password: user.password,
+          username: newUser.username,
+          password: newUser.password,
           rememberMe: false,
         }),
       });
-      if (loginRes.status < 300) {
-        await fetch("/api/auth", {
-          method: "POST",
-          credentials: "include",
-        });
-      }
+      const userRes = await fetch("/api/auth", {
+        method: "POST",
+        credentials: "include",
+      });
+      const userJSON = await userRes.text();
+      const user = new User(JSON.parse(userJSON));
+      setUser(user);
       router.push("/home");
       return;
     }
@@ -108,8 +112,8 @@ export default function Signup() {
       <FormSubmit
         text="Sign Up"
         onClick={() => {
-          if (UserError(user)) {
-            setError(UserError(user));
+          if (UserError(newUser)) {
+            setError(UserError(newUser));
           } else {
             Submit();
           }
