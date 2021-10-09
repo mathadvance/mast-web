@@ -42,7 +42,8 @@ const FormInput = ({
   return (
     <div>
       <input
-        className="w-full px-4 h-11 rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900"
+        className="w-full px-4 h-11 rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900 autofill:bg-blue-100 dark:autofill:bg-gray-700"
+        autoComplete="on"
         placeholder={placeholder}
         onChange={onChange}
         type={type === "password" ? (showPassword ? "text" : "password") : type}

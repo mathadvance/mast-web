@@ -46,7 +46,7 @@
     @apply text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline;
   }
   .pink-link {
-    @apply text-pink-700 hover:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 hover:underline
+    @apply text-pink-700 hover:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 hover:underline;
   }
 }
 
@@ -56,4 +56,10 @@
 
 [role="doc-noteref"] sup::after {
   content: "]";
+}
+
+/* firefox autofill */
+
+input {
+  filter: none;
 }
