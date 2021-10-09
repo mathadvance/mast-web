@@ -13,13 +13,8 @@ import {
   FaFileAlt,
   FaDoorOpen,
 } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 
 function SideRow({ needsUser = false, link, label, icon }) {
-
-  const { asPath } = useRouter();
-
   const { user } = useAuth();
 
   if (needsUser && !user) {
