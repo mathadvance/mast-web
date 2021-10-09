@@ -32,16 +32,19 @@ export default async (req, res) => {
       // so we can check if they are used or not, no more no less.
       // However, it is important that we actually associate emails with users,
       // because we want to remove the TTL index (creationDate) when a user is verified.
-      client.db(process.env.MONGODB_DB).collection("email_proxy").insertOne({
-        _id: _id,
-        creationDate: Date.now(),
-        // A little counterintuitive, but creationDate is used
-        // to delete unverified users, so we actually want to
-        // get rid of the creationDate field
-        // once a user verifies.
-        email: user.email,
-        username: user.username, // makes lookup easier for login
-      });
+      client
+        .db(process.env.MONGODB_DB)
+        .collection("email_proxy")
+        .insertOne({
+          _id: _id,
+          creationDate: new Date(Date.now()),
+          // A little counterintuitive, but creationDate is used
+          // to delete unverified users, so we actually want to
+          // get rid of the creationDate field
+          // once a user verifies.
+          email: user.email,
+          username: user.username, // makes lookup easier for login
+        });
       client.db(process.env.MONGODB_DB).collection("users").insertOne({
         _id: _id,
         creationDate: Date.now(),
