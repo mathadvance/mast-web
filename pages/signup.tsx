@@ -30,7 +30,7 @@ export default function Signup() {
       return;
     } else {
       setError("");
-      fetch("/api/login", {
+      const loginRes = await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({
           username: user.username,
@@ -38,13 +38,15 @@ export default function Signup() {
           rememberMe: false,
         }),
       });
-      const userRes = await fetch("/api/auth", {
-        method: "POST",
-        credentials: "include",
-      })
-      const userJSON = await userRes.text()
-      const AuthedUser = new User(JSON.parse(userJSON));
-      setUser(AuthedUser);
+      if (loginRes.status < 300) {
+        const userRes = await fetch("/api/auth", {
+          method: "POST",
+          credentials: "include",
+        });
+        const userJSON = await userRes.text();
+        const AuthedUser = new User(JSON.parse(userJSON));
+        setUser(AuthedUser);
+      }
       router.push("/home");
       return;
     }
@@ -97,9 +99,7 @@ export default function Signup() {
           <>
             It is recommended you use a{` `}
             <NextLink href="https://baekdal.com/thoughts/password-security-usability/">
-              <a className="blue-link">
-                string of words
-              </a>
+              <a className="blue-link">string of words</a>
             </NextLink>
             .
           </>
@@ -121,9 +121,7 @@ export default function Signup() {
       <div className="h-10">
         {`Have an account already? `}
         <NextLink href="login">
-          <a className="blue-link">
-            Log in.
-          </a>
+          <a className="blue-link">Log in.</a>
         </NextLink>
         <FormError error={error} />
       </div>

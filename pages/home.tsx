@@ -1,6 +1,6 @@
 import { useAuth } from "@/contexts/AuthProvider";
 import { powerToRole } from "@/utils/server/powerToRole";
-import { FormSubmit } from "@/components/FormComponents"
+import { FormSubmit } from "@/components/FormComponents";
 
 export default function Home() {
   const { user } = useAuth();
@@ -16,34 +16,41 @@ export default function Home() {
   const roleName = powerToRole(user.power);
 
   function User() {
+    const onSubmit = () => {};
     return (
       <div className="space-y-4">
         <p>
-          Please verify your account through your email address <em>({user.email})</em>.
+          Please verify your account through your email address{" "}
+          <em>({user.email})</em>.
         </p>
-        <FormSubmit text="Resend Verification Email" />
+        <FormSubmit
+          text="Resend Verification Email"
+          onClick={() => {
+            onSubmit();
+          }}
+        />
       </div>
     );
   }
 
   function Applicant() {
-    return <></>
+    return <></>;
   }
 
   function Student() {
-    return <></>
+    return <></>;
   }
 
   function Staff() {
-    return <></>
+    return <></>;
   }
 
   function Admin() {
-    return <></>
+    return <></>;
   }
 
   function SuperAdmin() {
-    return <></>
+    return <></>;
   }
 
   function RenderRole() {
@@ -65,7 +72,10 @@ export default function Home() {
 
   return (
     <>
-      <p>Greetings, <em>{user.first_name}</em>. Your current role is <em>{roleName}</em>.</p>
+      <p>
+        Greetings, <em>{user.first_name}</em>. Your current role is{" "}
+        <em>{roleName}</em>.
+      </p>
       <RenderRole />
     </>
   );

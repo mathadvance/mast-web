@@ -35,8 +35,8 @@ export default function Login() {
       const userRes = await fetch("/api/auth", {
         method: "POST",
         credentials: "include",
-      })
-      const userJSON = await userRes.text()
+      });
+      const userJSON = await userRes.text();
       const user = new User(JSON.parse(userJSON));
       setUser(user);
       router.push("/home");
@@ -76,16 +76,12 @@ export default function Login() {
       <div className="h-10">
         <div className="flex justify-between">
           <NextLink href="forgot-password">
-            <a className="blue-link">
-              Forgot password?
-            </a>
+            <a className="blue-link">Forgot password?</a>
           </NextLink>
           <div>
             {`Don't have an account? `}
             <NextLink href="signup">
-              <a className="blue-link">
-                Create one.
-              </a>
+              <a className="blue-link">Create one.</a>
             </NextLink>
           </div>
         </div>
