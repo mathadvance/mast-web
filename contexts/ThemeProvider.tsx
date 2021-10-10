@@ -13,6 +13,13 @@ export default function ThemeProvider({ children }) {
     user ? user.Settings.sidebar_color : "pink"
   );
 
+  useEffect(() => {
+    if (user && user.Settings.theme_preference && user.Settings.sidebar_color) {
+      setTheme(user.Settings.theme_preference);
+      setSideBarColor(user.Settings.sidebar_color);
+    }
+  }, [user]);
+
   // setTheme adds or removes dark to classList appropriately
   function setTheme(theme: string) {
     if (theme === "dark") {
