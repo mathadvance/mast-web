@@ -63,6 +63,7 @@ export default async (req, res) => {
           // then it is invalid.
           Settings: {
             theme_preference: "browser",
+            sidebar_color: "pink",
           },
           data: {},
         });

@@ -18,7 +18,7 @@ export default function Login() {
   const [rememberMe, setRememberMe] = useState(false);
   const { setUser } = useAuth();
 
-  const Submit = async () => {
+  async function Submit() {
     const res = await fetch("/api/login", {
       method: "POST",
       body: JSON.stringify({
@@ -42,7 +42,7 @@ export default function Login() {
       router.push("/home");
       return;
     }
-  };
+  }
   return (
     <FormBox>
       <h1 className="font-normal">Login</h1>

@@ -22,7 +22,7 @@ export default function Signup() {
   };
   const [error, setError] = useState("");
 
-  const Submit = async () => {
+  async function Submit() {
     setUserProperty("graduation_year", gradYear);
     const res = await fetch("/api/signup", {
       method: "POST",
@@ -51,7 +51,7 @@ export default function Signup() {
       router.push("/home");
       return;
     }
-  };
+  }
 
   return (
     <FormBox>

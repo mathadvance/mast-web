@@ -13,7 +13,8 @@ export default function Home() {
       <div className="space-y-4">
         <p>
           Please verify your account through your email address{" "}
-          <em>({user.email})</em>.
+          <em>({user.email})</em>. If the verification email did not send or the
+          link has expired, you can resend it.
         </p>
         <FormSubmit
           text="Resend Verification Email"

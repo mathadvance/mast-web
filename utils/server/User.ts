@@ -44,6 +44,7 @@ export class Timestamps {
 
 export class Settings {
   theme_preference: string;
+  sidebar_color: string;
 }
 
 export const UserError = (user: User) => {

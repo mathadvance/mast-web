@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
     "@supercharge/strings": "^1.21.0",
     "argon2": "^0.28.2",
     "cookies": "^0.8.0",
