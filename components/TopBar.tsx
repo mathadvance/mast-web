@@ -1,7 +1,6 @@
 import NextLink from "next/link";
 import { logoPath } from "@/utils/paths";
 import { useAuth } from "@/contexts/AuthProvider";
-import { FaDoorOpen } from "react-icons/fa";
 
 export default function TopBar() {
   const { user } = useAuth();
@@ -13,39 +12,31 @@ export default function TopBar() {
         </a>
       </NextLink>
       <div className="flex items-center gap-x-1.5">
-        {!user ?
+        {!user ? (
           <>
             <div>
               <NextLink href="/signup">
-                <a className="blue-link">
-                  Sign Up
-                </a>
+                <a className="blue-link">Sign Up</a>
               </NextLink>
             </div>
             <div className="text-gray-400">|</div>
             <div>
               <NextLink href="/login">
-                <a className="blue-link">
-                  Log In
-                </a>
+                <a className="blue-link">Log In</a>
               </NextLink>
             </div>
           </>
-          :
+        ) : (
           <>
-            <NextLink href="/settings">
-              <a className="blue-link">
-                {user.username}
-              </a>
+            <NextLink href="/profile">
+              <a className="blue-link">{user.username}</a>
             </NextLink>
             <div className="text-gray-400">|</div>
             <NextLink href="/signout">
-              <a className="blue-link">
-                Sign Out
-              </a>
+              <a className="blue-link">Sign Out</a>
             </NextLink>
           </>
-        }
+        )}
       </div>
     </div>
   );
