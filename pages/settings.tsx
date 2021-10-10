@@ -1,9 +1,4 @@
-import { RadioGroup } from "@headlessui/react";
-import {
-  RadioOption,
-  RadioOptionWrapper,
-} from "@/components/RadioGroupComponents";
-import { useState } from "react";
+import RadioGroup from "@/components/RadioGroup";
 
 import { useAuth } from "@/contexts/AuthProvider";
 import { useTheme } from "@/contexts/ThemeProvider";
@@ -34,29 +29,41 @@ export default function Settings() {
         Persist your settings if you want them to be loaded the next time you
         visit the site.
       </p>
-      <RadioGroup value={theme} onChange={setTheme}>
-        <RadioGroup.Label>
-          <h2>Theme</h2>
-        </RadioGroup.Label>
-        <RadioOptionWrapper>
-          <RadioOption value="light" label="Light Theme" />
-          <RadioOption value="dark" label="Dark Theme" />
-          <RadioOption
-            value="browser"
-            label="Browser Theme"
-            desc="This is determined through the prefers-color-scheme media query."
-          />
-        </RadioOptionWrapper>
-      </RadioGroup>
-      <RadioGroup value={sideBarColor} onChange={setSideBarColor}>
-        <RadioGroup.Label>
-          <h2>Navbar Color</h2>
-        </RadioGroup.Label>
-        <RadioOptionWrapper>
-          <RadioOption value="pink" label="Pink" />
-          <RadioOption value="blue" label="Blue" />
-        </RadioOptionWrapper>
-      </RadioGroup>
+      <RadioGroup
+        label={"Theme"}
+        value={theme}
+        onChange={setTheme}
+        options={[
+          {
+            value: "light",
+            label: "Light Theme",
+          },
+          {
+            value: "dark",
+            label: "Dark Theme",
+          },
+          {
+            value: "browser",
+            label: "Browser Theme",
+            desc: "This is determined through the prefers-color-scheme media query.",
+          },
+        ]}
+      />
+      <RadioGroup
+        label={"Navbar Color"}
+        value={sideBarColor}
+        onChange={setSideBarColor}
+        options={[
+          {
+            value: "pink",
+            label: "Pink",
+          },
+          {
+            value: "blue",
+            label: "Blue",
+          },
+        ]}
+      />
       <FormSubmit
         text="Persist Settings"
         onClick={() => {
