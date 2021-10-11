@@ -1,3 +1,5 @@
+const colors = require("tailwindcss/colors");
+
 module.exports = {
   mode: "jit",
   purge: [
@@ -6,7 +8,20 @@ module.exports = {
   ],
   darkMode: "class", // or 'media' or 'class'
   theme: {
-    extend: {},
+    screens: {
+      // completely replace
+      // extend doesn't work because otherwise, widephone is applied last
+      // don't include xl or 2xl because they aren't used
+      widephone: "480px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+    },
+    extend: {
+      colors: {
+        gray: colors.gray,
+      },
+    },
   },
   variants: {
     extend: {},

@@ -6,9 +6,18 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.4.1",
+    "@supercharge/strings": "^1.21.0",
+    "argon2": "^0.28.2",
+    "cookies": "^0.8.0",
+    "email-validator": "^2.0.4",
     "esbuild": "^0.12.25",
+    "ioredis": "^4.27.9",
+    "js-cookie": "^3.0.1",
     "mdx-bundler": "^6.0.1",
+    "mongodb": "^4.1.2",
     "next": "^11.1.2",
+    "nookies": "^2.5.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",

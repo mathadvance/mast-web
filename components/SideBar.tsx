@@ -1,5 +1,8 @@
 import NextLink from "next/link";
 
+import { useAuth } from "@/contexts/AuthProvider";
+import { useTheme } from "@/contexts/ThemeProvider";
+
 import {
   FaHome,
   FaCog,
@@ -12,24 +15,40 @@ import {
   FaDoorOpen,
 } from "react-icons/fa";
 
-function SideRow({ needsUser = false, link, label, icon }) {
-  if (needsUser) {
-    // do some checking
-    return null;
-  }
-  return (
-    <NextLink href={link}>
-      <a className="flex gap-x-2 items-center text-pink-700 hover:text-pink-600 dark:text-pink-300 dark:hover:text-pink-400 hover:underline">
-        <div className="text-lg">{icon}</div>
-        <div>{label}</div>
-      </a>
-    </NextLink>
-  );
-}
+export default function SideBar() {
+  const { sideBarColor } = useTheme();
 
-function SideBar() {
+  function SideRow({ needsUser = false, link, label, icon }) {
+    const { user } = useAuth();
+
+    if (needsUser && !user) {
+      return null;
+    }
+
+    return (
+      <NextLink href={link}>
+        <a
+          className={`flex gap-x-2 items-center ${
+            sideBarColor === "pink"
+              ? "pink-link"
+              : "text-blue-700 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-500 hover:underline"
+          }`}
+        >
+          <div className="text-lg">{icon}</div>
+          <div>{label}</div>
+        </a>
+      </NextLink>
+    );
+  }
+
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-1 gap-y-1.5 bg-pink-50 dark:bg-pink-800 rounded-xl border border-pink-500 dark:border-0 p-4">
+    <div
+      className={`grid grid-cols-1 widephone:grid-cols-2 sm:grid-cols-1 gap-y-1.5  rounded-xl border p-4 ${
+        sideBarColor === "pink"
+          ? `bg-pink-100 dark:bg-pink-600/25 border-pink-500`
+          : `bg-blue-200 dark:bg-opacity-30 dark:bg-blue-600 border-blue-500`
+      }`}
+    >
       <SideRow needsUser link="/home" label="Home" icon={<FaHome />} />
       <SideRow needsUser link="/settings" label="Settings" icon={<FaCog />} />
       <SideRow link="/about" label="About" icon={<FaInfo />} />
@@ -47,5 +66,3 @@ function SideBar() {
     </div>
   );
 }
-
-export default SideBar;

@@ -1,30 +1,43 @@
 import NextLink from "next/link";
+import { logoPath } from "@/utils/paths";
+import { useAuth } from "@/contexts/AuthProvider";
 
-function TopBar() {
+export default function TopBar() {
+  const { user } = useAuth();
   return (
-    <div className="w-full max-w-screen-lg mx-auto flex justify-between p-2 border-b border-gray-300 text-lg">
+    <div className="w-full mx-auto flex justify-between p-2 border-b border-gray-300 text-lg">
       <NextLink href="/">
-        <a>MAST</a>
+        <a>
+          <img src={logoPath} className="h-8 text-blue-600" alt="MAST" />
+        </a>
       </NextLink>
-      <div className="flex gap-x-1.5">
-        <div>
-          <NextLink href="signup">
-            <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
-              Sign Up
-            </a>
-          </NextLink>
-        </div>
-        <div className="text-gray-400">|</div>
-        <div>
-          <NextLink href="login">
-            <a className="text-blue-600 hover:text-blue-500 dark:text-blue-500 dark:hover:text-blue-400 hover:underline">
-              Log In
-            </a>
-          </NextLink>
-        </div>
+      <div className="flex items-center gap-x-1.5">
+        {!user ? (
+          <>
+            <div>
+              <NextLink href="/signup">
+                <a className="blue-link">Sign Up</a>
+              </NextLink>
+            </div>
+            <div className="text-gray-400">|</div>
+            <div>
+              <NextLink href="/login">
+                <a className="blue-link">Log In</a>
+              </NextLink>
+            </div>
+          </>
+        ) : (
+          <>
+            <NextLink href="/profile">
+              <a className="blue-link">{user.username}</a>
+            </NextLink>
+            <div className="text-gray-400">|</div>
+            <NextLink href="/signout">
+              <a className="blue-link">Sign Out</a>
+            </NextLink>
+          </>
+        )}
       </div>
     </div>
   );
 }
-
-export default TopBar;
