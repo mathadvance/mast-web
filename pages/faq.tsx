@@ -1,3 +1,7 @@
 export default function FAQ() {
-    return null;
+    return (
+        <p>
+            !!!spammery!!!
+        </p>
+    );
 }

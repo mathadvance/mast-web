@@ -1,0 +1,61 @@
+{
+    "staff": [
+      {
+        "title": "Director, Problem Writer, Web Developer, Outreach",
+        "staffName": "Dennis Chen",
+        "biography": "Dennis Chen is a rising junior who writes about mathematics and previously was an active contestant in competition mathematics, qualifying for the USAJMO in 2020. Outside of mathematics, he enjoys writing fiction, drawing, designing documents, singing film or musical scores, and playing Minecraft."
+      },
+      {
+        "title": "Problem Writer, Web Developer, Outreach",
+        "staffName": "William Dai",
+        "biography": "William Dai is a rising junior who has been active in competition math for the past four years. He has previously made AIME four times, competed in Texas MATHCOUNTS State, PuMAC, HMMT, and many other mathematics contests. In 2020, he made AMC 10 DHR. His favorite subject of contest math is combinatorics and he particularly likes elegant recursions. Aside from contest math, William also has an interest in competitive programming and has made USACO Gold. In his free time, he likes reading short stories and listening to piano music.",
+        "imageURL": "/staff-pictures/william-dai"
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "Aaron Guo",
+        "biography": "Aaron Guo, a rising junior, is and has been a math enthusiast for the past 8 years. His passions include solving, teaching, and writing problems in contest mathematics. Aaron is a 7-time AMC, 5-time AIME, 3-time USAJMO, and 1-time MOP participant. Aaron also works as a curriculum developer at MAST."
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "Ethan Han",
+        "biography": "Ethan Han is a rising sophomore who has qualified for the 2019, 2020, and 2021 AIMEs. He helps write material for MAST. He also enjoys coding and playing the viola, along with eating Asian food and listening to classical music."
+      },
+      {
+        "title": "Problem Writer, Proofreader, Web Developer",
+        "staffName": "Amol Rama",
+        "biography": "Amol Rama is a rising junior at Monta Vista High School. He has participated in the Science Olympiad over the past four years, making two national appearances and winning numerous medals in Earth Science, Physics, and Chemistry events. In the 2019-2020 season, he was the co-captain of the Science Olympiad team. In addition, he has qualified for the AIME multiple times, been awarded the AMC 10 Distinguished Honor Roll multiple times, and made USAJMO in 2019 and 2020. Furthermore, he has been a teacher's assistant in mathematics for the last two years."
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "Prajith Velicheti",
+        "biography": "Prajith Velicheti is a rising junior and is passionate about math, physics, computer science, chess, and music; he is an AIME qualifier and teaches competition mathematics at the math club at his school, and he teaches introductory competition mathematics and introductory physics at a local middle school. In his free time, he plays chess online and has participated in tourstaffNaments prior to the pandemic, and he also plays the saxophone as part of the top band in his school."
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "Jerry Xiao",
+        "biography": "Jerry Xiao is a rising sophomore and has been an active math competitor for the past three years, participating in Mathcounts, AMC, AIME, HMMT, SMT etc. In his spare time, you can find him running, writing problems, listening to music, or eating enchiladas."
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "Dylan Yu",
+        "biography": "Dylan Yu is a rising junior and a two-time USA(J)MO qualifier. His favorite area of math is geometry, and privately he thinks that combinatorics is a trap to dissuade kids from pursuing higher mathematics. Outside of math, he likes physics, computer science, and economics. In his spare time, he likes to read and play basketball with his friends. His favorite condiment is barbeque sauce."
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "William Zhao",
+        "biography": "William Zhao is a rising freshman who is passionate about writing and solving problems. He has prevoiusly made AIME three times, qualified for the 2021 USAJMO, and placed highly in competitions such as BAMO, CJMO, among others. He also actively participates in physics competitions, and he sat the 2021 USAPhO. In his spare time, he enjoys swimming and reading books."
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "Brian Zhang",
+        "biography": "Brian Zhang is currently a sophomore at Enloe High School. He has qualified for the AIME twice and perfected the AMC 8 in 2019. He is also a two times Mathcounts Nationals Qualifier. Outside of math, he likes to spend his time learning physics, coding, and reading."
+      },
+      {
+        "title": "Problem Writer",
+        "staffName": "Ethan Liu",
+        "biography": "Ethan Liu is a rising junior at Westwood High School. He attended MOP 2021 and has attained perfect scores on both the AMC 10 and AMC 12. He likes olympiad geometry, writing problems, and compiling handouts. He also enjoys watching anime, reading manga, and playing miscellaneous video games."
+      }
+    ]
+  }
+  
