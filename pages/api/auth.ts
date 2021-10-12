@@ -1,13 +1,13 @@
 import client from "@/utils/server/mongodb";
-import redis from "@/utils/server/redis";
-import sessionKeygen from "@/utils/server/sessionKeygen";
+import { redis_sessionIDs } from "@/utils/server/redis";
+import keygen from "@/utils/server/keygen";
 import Cookies from "cookies";
 
 const Auth = async (req, res) => {
   const cookies = new Cookies(req, res);
   const session = cookies.get("session");
   if (session) {
-    const redisValString = await redis.get(session);
+    const redisValString = await redis_sessionIDs.get(session);
     if (!redisValString) {
       res.status(400).send(null);
       return;
@@ -36,12 +36,12 @@ const Auth = async (req, res) => {
       } else {
         if (
           new Date(Date.now()) >
-            new Date(redisLastRegenerated.getTime() + 1000 * 60 * 60) &&
+          new Date(redisLastRegenerated.getTime() + 1000 * 60 * 60) &&
           redisValObject.regenerate
         ) {
           // if it's an hour past when we set the token,
           // AND it regenerates (which should always be true??) refresh it
-          const session = sessionKeygen();
+          const session = keygen();
 
           const redisValString = JSON.stringify({
             username: user.username,
@@ -60,7 +60,7 @@ const Auth = async (req, res) => {
             secure: process.env.NODE_ENV !== "development",
           });
 
-          redis.set(session, redisValString, "EX", maxAge);
+          redis_sessionIDs.set(session, redisValString, "EX", maxAge);
         }
         // otherwise, don't refresh token
         res.status(200).send(JSON.stringify(user));
@@ -69,7 +69,7 @@ const Auth = async (req, res) => {
     }
   } else {
     cookies.set("session");
-    redis.del(session);
+    redis_sessionIDs.del(session);
     res.status(200).send(null);
     return;
   }

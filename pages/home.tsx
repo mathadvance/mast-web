@@ -8,7 +8,12 @@ export default function Home() {
   const roleName = powerToRole(user.power);
 
   function User() {
-    const onSubmit = () => {};
+    function send_verification_email() {
+      fetch("/api/email/send_verification", {
+        method: "POST",
+        body: user.username,
+      })
+    };
     return (
       <div className="space-y-4">
         <p>
@@ -19,7 +24,7 @@ export default function Home() {
         <FormSubmit
           text="Resend Verification Email"
           onClick={() => {
-            onSubmit();
+            send_verification_email();
           }}
         />
       </div>

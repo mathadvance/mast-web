@@ -39,7 +39,8 @@ export class User {
 }
 
 export class Timestamps {
-  earliest_acceptable_auth_timestamp: Date;
+  earliest_acceptable_auth_timestamp: number;
+  earliest_acceptable_email_verification_timestamp: number; // This way, we can invalidate any prior email verification IDs
 }
 
 export class Settings {
@@ -86,6 +87,9 @@ export const UserError = (user: User) => {
   }
   if (!user.password || user.password.length === 0) {
     return "You must input a password.";
+  }
+  if (user.password.length < 8) {
+    return "Your password must be at least 8 characters long."
   }
   return;
 };

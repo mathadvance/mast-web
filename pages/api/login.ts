@@ -2,8 +2,8 @@ import client from "@/utils/server/mongodb";
 import argon2 from "argon2";
 import EmailValidator from "email-validator";
 import Cookies from "cookies";
-import sessionKeygen from "@/utils/server/sessionKeygen";
-import redis from "@/utils/server/redis";
+import keygen from "@/utils/server/keygen";
+import { redis_sessionIDs } from "@/utils/server/redis";
 
 export default async (req, res) => {
   const request = JSON.parse(req.body);
@@ -39,7 +39,7 @@ export default async (req, res) => {
       maxAge = 60 * 60;
     }
 
-    const sessionID = sessionKeygen();
+    const sessionID = keygen();
 
     const redisValString = JSON.stringify({
       username: request.username,
@@ -58,7 +58,7 @@ export default async (req, res) => {
       secure: process.env.NODE_ENV !== "development",
     });
 
-    redis.set(sessionID, redisValString, "EX", maxAge);
+    redis_sessionIDs.set(sessionID, redisValString, "EX", maxAge);
 
     res.status(200).send("Login successful.");
     return;

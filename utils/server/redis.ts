@@ -1,5 +1,6 @@
 import Redis from "ioredis";
 
-const redis = new Redis(process.env.REDIS_URI);
+const redis_sessionIDs = new Redis(process.env.REDIS_URI + "/0");
+const redis_emailVerificationIDs = new Redis(process.env.REDIS_URI + "/1");
 
-export default redis;
+export { redis_sessionIDs, redis_emailVerificationIDs };
