@@ -40,7 +40,7 @@ export class User {
 
 export class Timestamps {
   earliest_acceptable_auth_timestamp: number;
-  earliest_acceptable_email_verification_timestamp: number; // This way, we can invalidate any prior email verification IDs
+  most_recent_email_verification_timestamp: number; // This way, we can invalidate any prior email verification IDs
 }
 
 export class Settings {

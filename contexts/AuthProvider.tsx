@@ -27,7 +27,7 @@ export default function AuthProvider({ children }) {
       value={{
         user,
         setUser,
-        loading,
+        loading
       }}
     >
       {children}

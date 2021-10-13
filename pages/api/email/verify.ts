@@ -1,5 +1,34 @@
 import client from "@/utils/server/mongodb"
+import { redis_emailVerificationIDs } from "@/utils/server/redis";
 
 export default async (req, res) => {
+    const redisValString = await redis_emailVerificationIDs.get(req.body);
+    if (!redisValString) {
+        res.status(400).send("This email verification key is invalid." + req.body)
+        return;
+    }
 
+    const redisValObject = JSON.parse(redisValString);
+
+    const user = await client.db(process.env.MONGODB_DB).collection("users").findOne(
+        {
+            username:
+                { $eq: redisValObject.username }
+        },
+        {
+            projection: { hashedPassword: 0 }
+        }
+    );
+
+    if (redisValObject.timestamp < user.Timestamps.most_recent_email_verification_timestamp) {
+        res.status(400).send("This is not the most recently issued verification key.");
+    }
+
+    if (user.power > 0) {
+        res.status(400).send("This user is already verified.")
+    }
+
+    client.db(process.env.MONGODB_DB).collection("users").updateOne({ username: { $eq: redisValObject.username } }, { $set: { power: 1 }, $unset: { destructionDate: "" } })
+    res.status(200).send("Successfully verified email.")
+    return;
 }
