@@ -33,6 +33,10 @@ export default function Signup() {
       return;
     } else {
       setError("");
+      fetch("/api/email/send_verification", {
+        method: "POST",
+        body: newUser.username,
+      })
       await fetch("/api/login", {
         method: "POST",
         body: JSON.stringify({
