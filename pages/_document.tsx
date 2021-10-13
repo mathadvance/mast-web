@@ -5,7 +5,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <link rel="shortcut icon" type="image/x-icon" href="sail.svg" />
+          <link rel="shortcut icon" type="image/x-icon" href="/sail.svg" />
         </Head>
         <body>
           <Main />
