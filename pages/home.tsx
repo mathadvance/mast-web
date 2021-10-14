@@ -2,10 +2,10 @@ import { useAuth } from "@/contexts/AuthProvider";
 import { powerToRole } from "@/utils/server/powerToRole";
 import { FormSubmit } from "@/components/FormComponents";
 import NextLink from "next/link";
-import { useState } from "react";
+import router from "next/router";
 
 export default function Home() {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
 
   const roleName = powerToRole(user.power);
 
@@ -16,8 +16,6 @@ export default function Home() {
         body: user.username,
       });
     }
-
-    const [open, setOpen] = useState(false);
 
     return (
       <div className="space-y-4">
@@ -46,6 +44,10 @@ export default function Home() {
         method: "POST",
         body: JSON.stringify({ username: user.username, power: 2 }),
       });
+      const updatedUser = user;
+      updatedUser.power = 2;
+      setUser(updatedUser);
+      router.push("/home"); // Forces page to reinitialize
     }
     return (
       <div className="space-y-4">
