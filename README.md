@@ -34,13 +34,23 @@ and put all your environment variables there.
 If you create a local Mongo database for testing, which I recommend,
 you will want .env.local to look like this:
 
+    DOMAIN=https://mast.mathadvance.org
+
     MONGODB_URI=mongodb://dbOwner:<password>@localhost:27017/?authSource=mast&readPreference=primary
     MONGODB_DB=mast
-    REDIS_URI=redis://127.0.0.1:6379/0
+
+    REDIS_SESSION_URI=redis://127.0.0.1:6379/0
+    REDIS_EMAILVERIFY_URI=redis://127.0.0.1:6379/1
+
+    NOREPLY_NAME=
+    NOREPLY_EMAIL=
+    NOREPLY_PASSWD=
 
 (Replace `<password>` with the password of the dbOwner user `dbOwner`.)
 
-(You can change the value of `MONGODB_DB` if you really wish to do so, but there is not really a good reason to do so. If you do, replace `mast` in the instructions with whatever your database name is.)
+To be honest, you probably don't need the `DOMAIN` environment variable. I'm just including it for completeness.
+
+You can change the value of `MONGODB_DB` if you really wish to do so, but there is not really a good reason to do so. If you do, replace `mast` in the instructions with whatever your database name is.
 
 After installing `mongodb` locally and starting the mongodb services, run `mongosh` and type the following commands **AFTER** authenticating into dbOwner:
 
