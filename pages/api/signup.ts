@@ -1,5 +1,5 @@
 import { User, UserError } from "@/utils/server/User";
-import client from "@/utils/server/mongodb";
+import { mastDB } from "@/utils/server/mongodb";
 import { ObjectId } from "mongodb";
 import argon2 from "argon2";
 
@@ -11,14 +11,12 @@ export default async (req, res) => {
     res.status(400).send(error);
     return;
   } else {
-    const matching_emails = await client
-      .db(process.env.MONGODB_DB)
+    const matching_emails = await mastDB
       .collection("email_proxy")
       .findOne({
         email: { $eq: user.email },
       });
-    const matching_usernames = await client
-      .db(process.env.MONGODB_DB)
+    const matching_usernames = await mastDB
       .collection("users")
       .findOne({
         username: { $eq: user.username },
@@ -32,8 +30,7 @@ export default async (req, res) => {
       // so we can check if they are used or not, no more no less.
       // However, it is important that we actually associate emails with users,
       // because we want to remove the TTL index (creationDate) when a user is verified.
-      client
-        .db(process.env.MONGODB_DB)
+      mastDB
         .collection("email_proxy")
         .insertOne({
           _id: _id,
@@ -42,8 +39,7 @@ export default async (req, res) => {
           email: user.email,
           username: user.username, // makes lookup easier for login
         });
-      client
-        .db(process.env.MONGODB_DB)
+      mastDB
         .collection("users")
         .insertOne({
           _id: _id,

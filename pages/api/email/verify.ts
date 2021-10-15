@@ -1,4 +1,4 @@
-import client from "@/utils/server/mongodb"
+import { mastDB } from "@/utils/server/mongodb"
 import { redis_emailVerificationIDs } from "@/utils/server/redis";
 
 export default async (req, res) => {
@@ -10,7 +10,7 @@ export default async (req, res) => {
 
     const redisValObject = JSON.parse(redisValString);
 
-    const user = await client.db(process.env.MONGODB_DB).collection("users").findOne(
+    const user = await mastDB.collection("users").findOne(
         {
             username:
                 { $eq: redisValObject.username }
@@ -28,7 +28,7 @@ export default async (req, res) => {
         res.status(400).send("This user is already verified.")
     }
 
-    client.db(process.env.MONGODB_DB).collection("users").updateOne({ username: { $eq: redisValObject.username } }, { $set: { power: 1 }, $unset: { destructionDate: "" } })
+    mastDB.collection("users").updateOne({ username: { $eq: redisValObject.username } }, { $set: { power: 1 }, $unset: { destructionDate: "" } })
     res.status(200).send("Successfully verified email.")
     return;
 }

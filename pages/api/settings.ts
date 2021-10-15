@@ -1,10 +1,9 @@
-import client from "@/utils/server/mongodb";
+import { mastDB } from "@/utils/server/mongodb";
 
 export default async (req, res) => {
   const reqObject = JSON.parse(req.body);
   if (reqObject.username) {
-    client
-      .db(process.env.MONGODB_DB)
+    mastDB
       .collection("users")
       .updateOne(
         {

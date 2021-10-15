@@ -1,4 +1,4 @@
-import client from "@/utils/server/mongodb"
+import { mastDB } from "@/utils/server/mongodb"
 import { redis_emailVerificationIDs } from "@/utils/server/redis";
 import { createNoReplyMail } from "@/utils/server/email";
 import keygen from "@/utils/server/keygen";
@@ -6,11 +6,11 @@ import no_reply from "@/utils/email_templates/no_reply";
 
 export default async (req, res) => {
     const username: string = req.body;
-    const user = await client.db(process.env.MONGODB_DB).collection("users").findOne({ username: { $eq: username } })
+    const user = await mastDB.collection("users").findOne({ username: { $eq: username } })
 
     const timestamp = Date.now();
 
-    client.db(process.env.MONGODB_DB).collection("users").updateOne({ username: { $eq: username } }, { $set: { "Timestamps.most_recent_email_verification_timestamp": timestamp } });
+    mastDB.collection("users").updateOne({ username: { $eq: username } }, { $set: { "Timestamps.most_recent_email_verification_timestamp": timestamp } });
 
     const emailVerificationID = keygen();
 

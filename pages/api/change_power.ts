@@ -1,11 +1,11 @@
-import client from "@/utils/server/mongodb"
+import { mastDB } from "@/utils/server/mongodb"
 import { redis_emailVerificationIDs } from "@/utils/server/redis";
 
 export default async (req, res) => {
 
     const body = JSON.parse(req.body)
 
-    const user = await client.db(process.env.MONGODB_DB).collection("users").findOne(
+    const user = await mastDB.collection("users").findOne(
         {
             username:
                 { $eq: body.username }
@@ -15,7 +15,7 @@ export default async (req, res) => {
         }
     );
 
-    client.db(process.env.MONGODB_DB).collection("users").updateOne({ username: { $eq: body.username } }, { $set: { power: body.power }, $unset: { destructionDate: "" } })
+    mastDB.collection("users").updateOne({ username: { $eq: body.username } }, { $set: { power: body.power }, $unset: { destructionDate: "" } })
     res.status(200).send("Successfully changed power.")
     return;
 }

@@ -1,4 +1,4 @@
-import client from "@/utils/server/mongodb";
+import { mastDB } from "@/utils/server/mongodb";
 import { redis_sessionIDs } from "@/utils/server/redis";
 import keygen from "@/utils/server/keygen";
 import Cookies from "cookies";
@@ -15,8 +15,7 @@ const Auth = async (req, res) => {
       // which should not happen, so it's an error
     } else {
       const redisValObject = JSON.parse(redisValString);
-      const user = await client
-        .db(process.env.MONGODB_DB)
+      const user = await mastDB
         .collection("users")
         .findOne(
           { username: { $eq: redisValObject.username } },

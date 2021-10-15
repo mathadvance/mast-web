@@ -89,7 +89,7 @@ export const UserError = (user: User) => {
     return "You must input a password.";
   }
   if (user.password.length < 8) {
-    return "Your password must be at least 8 characters long."
+    return "Your password must be 8 characters or longer."
   }
   return;
 };
