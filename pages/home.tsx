@@ -11,7 +11,7 @@ export default function Home() {
 
   function Unverified() {
     function send_verification_email() {
-      fetch("/api/email/send_verification", {
+      fetch("/api/email/send-verification", {
         method: "POST",
         body: user.username,
       });
@@ -40,7 +40,7 @@ export default function Home() {
 
   function User() {
     function become_applicant() {
-      fetch("/api/change_power", {
+      fetch("/api/change-power", {
         method: "POST",
         body: JSON.stringify({ username: user.username, power: 2 }),
       });
@@ -83,13 +83,13 @@ export default function Home() {
             <a className="blue-link">application instructions</a>
           </NextLink>{" "}
           and enter the{" "}
-          <NextLink href="/profile/app_portal">
+          <NextLink href="/profile/app-portal">
             <a className="blue-link">application portal</a>
           </NextLink>{" "}
           to begin applying.
         </p>
         <div>
-          <NextLink href="/profile/app_portal">
+          <NextLink href="/profile/app-portal">
             <a>
               <FormSubmit text="Go to Application Portal" />
             </a>

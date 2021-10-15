@@ -31,7 +31,7 @@ export default function Profile() {
       setError("Your new password must be 8 characters or longer.");
       return;
     }
-    await fetch("/api/change_password", {
+    await fetch("/api/change-password", {
       method: "POST",
       body: JSON.stringify({
         username: user.username,
@@ -49,7 +49,7 @@ export default function Profile() {
   }
 
   function SignOut() {
-    fetch("/api/set_earliest_acceptable_auth", {
+    fetch("/api/set-earliest-acceptable-auth", {
       method: "POST",
       body: user.username,
       credentials: "include",

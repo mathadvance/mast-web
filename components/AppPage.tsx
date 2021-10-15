@@ -11,16 +11,17 @@ import { useEffect } from "react";
 export default function AppPage({ children }) {
   const { asPath } = useRouter();
   const paths = asPath.split("/");
+  const firstPath = paths[1];
   const lastPath = paths[paths.length - 1];
 
   const protectedPages = ["", "home", "settings"];
   const antiProtectedPages = ["", "login", "signup"];
 
-  const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1;
+  const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1 || firstPath === "profile";
   const isAntiProtectedPage: boolean =
     antiProtectedPages.indexOf(lastPath) > -1;
 
-  const noStylePages = ["", "login", "signup"];
+  const noStylePages = ["", "login", "signup", "forgot-password", "reset-password"];
 
   // We choose to make index both protected and anti-protected
   // because we never want it to render.

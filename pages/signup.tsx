@@ -33,7 +33,7 @@ export default function Signup() {
       return;
     } else {
       setError("");
-      fetch("/api/email/send_verification", {
+      fetch("/api/email/send-verification", {
         method: "POST",
         body: newUser.username,
       })
