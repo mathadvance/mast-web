@@ -30,6 +30,7 @@ const FormInput = ({
   desc,
   value = undefined,
   pattern = undefined,
+  autoComplete = true,
 }: {
   placeholder?: string;
   onChange?: any;
@@ -37,13 +38,14 @@ const FormInput = ({
   desc?: any;
   value?: string | number;
   pattern?: string;
+  autoComplete?: boolean;
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div>
       <input
         className="w-full px-4 h-11 rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900 autofill:bg-blue-100 dark:autofill:bg-gray-700"
-        autoComplete="on"
+        autoComplete={autoComplete ? "on" : "off"}
         placeholder={placeholder}
         onChange={onChange}
         type={type === "password" ? (showPassword ? "text" : "password") : type}
@@ -67,6 +69,36 @@ const FormInput = ({
             onClick={() => setShowPassword(!showPassword)}
           />
         </>
+      )}
+    </div>
+  );
+};
+
+const FormTextArea = ({
+  autoComplete = true,
+  placeholder = "",
+  onChange = () => {},
+  desc,
+  minHeight = "min-h-[8rem]",
+}: {
+  autoComplete?: boolean;
+  placeholder?: string;
+  onChange?: any;
+  desc?: any;
+  minHeight?: string; // Should be of the form min-h-[8rem], best to use rem and not px
+}) => {
+  return (
+    <div>
+      <textarea
+        className={`w-full px-4 py-2 ${minHeight} rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900 autofill:bg-blue-100 dark:autofill:bg-gray-700`}
+        autoComplete={autoComplete ? "on" : "off"}
+        placeholder={placeholder}
+        onChange={onChange}
+      />
+      {desc && (
+        <div className="mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 -mb-2">
+          {desc}
+        </div>
       )}
     </div>
   );
@@ -100,4 +132,4 @@ const FormError = ({ error }: any) => {
   );
 };
 
-export { FormBox, FormInput, FormSubmit, FormError };
+export { FormBox, FormInput, FormTextArea, FormSubmit, FormError };
