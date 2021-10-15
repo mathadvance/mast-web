@@ -86,7 +86,7 @@ export default function Profile() {
       />
       <h2>Sign Out of All Sessions</h2>
       <p>
-        Clicking the button below will sign you out of all sessions{" "}
+        Clicking the button below will sign you out of all sessions,{" "}
         <em>including this one</em>.
       </p>
       <FormSubmit

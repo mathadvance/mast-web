@@ -51,7 +51,7 @@ export default function AppPortal() {
     <>
       <h1>Application Portal</h1>
       <p>
-        Pressing the "Save" button will save your responses, except for the
+        Clicking the "Save" button will save your responses, except for the
         uploaded PDF, to your{" "}
         <NextLink href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">
           <a className="blue-link">local storage</a>
@@ -64,12 +64,12 @@ export default function AppPortal() {
         transfer your responses between devices.
       </p>
       <p>
-        Once you are finished, press the "Submit" button to send your responses
+        Once you are finished, click the "Submit" button to send your responses
         to the MAST website.
       </p>
       <h2>Background</h2>
       <p>
-        Your answers to these questins will help us learn more about the
+        Your answers to these questions will help us learn more about the
         program's reach. They will <em>not</em> be used for decisions.
       </p>
       <div className="space-y-4">
