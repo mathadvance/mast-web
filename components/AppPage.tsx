@@ -9,10 +9,13 @@ import Loading from "@/components/Loading";
 import { useEffect } from "react";
 
 export default function AppPage({ children }) {
-  const { asPath } = useRouter();
+  const { asPath, pathname } = useRouter();
+
   const paths = asPath.split("/");
   const firstPath = paths[1];
   const lastPath = paths[paths.length - 1];
+
+  const lastPathName = pathname.split("/")[paths.length - 1];
 
   const protectedPages = ["", "home", "settings"];
   const antiProtectedPages = ["", "login", "signup"];
@@ -62,7 +65,7 @@ export default function AppPage({ children }) {
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex justify-center">
-      {noStylePages.indexOf(lastPath) > -1 ? (
+      {noStylePages.indexOf(lastPath) > -1 || noStylePages.indexOf(lastPathName) > -1 ? (
         <>{children}</>
       ) : (
         <div className="px-12 py-6 w-full max-w-screen-lg">
