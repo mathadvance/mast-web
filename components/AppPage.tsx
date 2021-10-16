@@ -38,6 +38,9 @@ export default function AppPage({ children }) {
     if (!loading && user && isAntiProtectedPage) {
       router.push("/home");
     }
+    if (!loading && user && user.power != 2 && lastPath === "app-portal") {
+      router.push("/home")
+    }
   }, [loading, asPath]);
 
   if (
