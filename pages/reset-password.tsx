@@ -13,21 +13,29 @@ export default function reset_password() {
     const [verificationSucceeded, setVerificationSucceeded] = useState(false);
     let key;
 
-    async function reset_password() {
+    function reset_password() {
         if (password.length < 8) {
             setError("Your new password must be 8 characters or longer.")
             return;
         }
-        await fetch("/api/email/reset-password", {
-            method: "POST",
-            body: JSON.stringify({
-                operation: "change",
-                password
+        (async () => {
+            const res = await fetch("/api/email/reset-password", {
+                method: "POST",
+                body: JSON.stringify({
+                    operation: "change",
+                    key: router.query.key,
+                    password
+                })
             })
-        })
-        setResetted(true);
-        setError("");
-        return;
+            if (res.status === 200) {
+                setResetted(true);
+                setError("");
+                return;
+            } else {
+                setVerificationSucceeded(false);
+                return;
+            }
+        })();
     }
 
     useEffect(() => {

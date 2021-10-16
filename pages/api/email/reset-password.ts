@@ -1,5 +1,6 @@
 import { mastDB } from "@/utils/server/mongodb";
 import { redis_passwordResetIDS } from "@/utils/server/redis";
+import argon2 from "argon2";
 
 export default async (req, res) => {
     const reqObject = JSON.parse(req.body);
@@ -22,7 +23,10 @@ export default async (req, res) => {
         return;
     }
     if (reqObject.operation === "change") {
-
+        const hashedPassword = await argon2.hash(reqObject.password);
+        redis_passwordResetIDS.del(reqObject.key)
+        mastDB.collection("users").updateOne({ username: redisValObject.username }, { $set: { hashedPassword: hashedPassword } })
+        res.status(200).send("Your password has been reset.")
+        return;
     }
-    return;
 }
