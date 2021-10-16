@@ -18,7 +18,7 @@ export default function AppPage({ children }) {
   const lastPathName = pathname.split("/")[paths.length - 1];
 
   const protectedPages = ["", "home", "settings"];
-  const antiProtectedPages = ["", "login", "signup"];
+  const antiProtectedPages = ["", "login", "signup", "forgot-password", "reset-password"];
 
   const isProtectedPage: boolean = protectedPages.indexOf(lastPath) > -1 || firstPath === "profile";
   const isAntiProtectedPage: boolean =
