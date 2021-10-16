@@ -73,7 +73,7 @@ export default function Login() {
           }}
         />
       </div>
-      <div className="h-10">
+      <div>
         <div className="flex justify-between">
           <NextLink href="forgot-password">
             <a className="blue-link">Forgot password?</a>

@@ -25,7 +25,7 @@ const FormBox = ({ children }) => {
 
 const FormInput = ({
   placeholder = "",
-  onChange = () => {},
+  onChange = () => { },
   type = "text",
   desc,
   value = undefined,
@@ -54,9 +54,8 @@ const FormInput = ({
       />
       {desc && (
         <div
-          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${
-            type != "password" && `-mb-2`
-          }`}
+          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${type != "password" && `-mb-2`
+            }`}
         >
           {desc}
         </div>
@@ -77,7 +76,7 @@ const FormInput = ({
 const FormTextArea = ({
   autoComplete = true,
   placeholder = "",
-  onChange = () => {},
+  onChange = () => { },
   desc,
   minHeight = "min-h-[8rem]",
 }: {
@@ -106,7 +105,7 @@ const FormTextArea = ({
 
 const FormSubmit = ({
   text = "",
-  onClick = () => {},
+  onClick = () => { },
   disabled = false,
 }: {
   text?: string;
@@ -127,7 +126,7 @@ const FormSubmit = ({
 const FormError = ({ error }: any) => {
   return (
     <>
-      <div className="text-red-500 text-sm">{error}</div>
+      <div className="text-red-500 text-sm min-h-3 h-3">{error}</div>
     </>
   );
 };

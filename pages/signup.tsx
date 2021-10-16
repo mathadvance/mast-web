@@ -123,7 +123,7 @@ export default function Signup() {
           }
         }}
       />
-      <div className="h-10">
+      <div>
         {`Have an account already? `}
         <NextLink href="login">
           <a className="blue-link">Log in.</a>
