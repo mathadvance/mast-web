@@ -4,7 +4,7 @@ import { redis_emailVerificationIDs } from "@/utils/server/redis";
 export default async (req, res) => {
     const redisValString = await redis_emailVerificationIDs.get(req.body);
     if (!redisValString) {
-        res.status(400).send("This email verification key is invalid." + req.body)
+        res.status(400).send("The email verification key is invalid.")
         return;
     }
 
@@ -29,6 +29,7 @@ export default async (req, res) => {
     }
 
     mastDB.collection("users").updateOne({ username: { $eq: redisValObject.username } }, { $set: { power: 1 }, $unset: { destructionDate: "" } })
+    redis_emailVerificationIDs.del(req.body)
     res.status(200).send("Successfully verified email.")
     return;
 }

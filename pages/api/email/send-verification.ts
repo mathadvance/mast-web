@@ -14,12 +14,12 @@ export default async (req, res) => {
 
     const emailVerificationID = keygen();
 
-    const redisValObject = JSON.stringify({
+    const redisValString = JSON.stringify({
         username,
         timestamp,
     })
 
-    redis_emailVerificationIDs.set(emailVerificationID, redisValObject, "EX", 60 * 30); // 30 minutes to verify
+    redis_emailVerificationIDs.set(emailVerificationID, redisValString, "EX", 60 * 30); // 30 minutes to verify
 
     const verification_link = `${process.env.NODE_ENV === "development" ? `http://localhost:3000` : process.env.DOMAIN}/profile/verify-email?key=${emailVerificationID}` // Change what URL is being sent in dev because test emails come from test domain, not actual production domain, so why link to production domain?
 
@@ -30,4 +30,5 @@ export default async (req, res) => {
     });
 
     res.status(200).send("Successfully sent verification email.")
+    return;
 }
