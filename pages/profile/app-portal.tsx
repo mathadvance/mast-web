@@ -96,11 +96,14 @@ export default function AppPortal() {
       </div>
       <h2>Problems</h2>
       <p>
-        Please upload a PDF of your solutions to{" "}
+        Upload a PDF of your solutions to{" "}
         <NextLink href="/diagnostic/season4.pdf">
           <a className="blue-link">this year's diagnostic problems</a>
         </NextLink>
         .
+      </p>
+      <p>
+        Please have your full name (first and last) appear in the PDF title and the PDF file itself. It's no big deal if you forget, but this makes it more convenient for me when I'm going through applications.
       </p>
       <p>
         There is a filesize limit of 2MB. In practice, the only way you can get
