@@ -6,45 +6,57 @@ import router from "next/router";
 export default function Profile() {
   const { user, setUser } = useAuth();
 
+  const [newEmail, setNewEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [error, setError] = useState("");
+  const [pwdError, setPwdError] = useState("");
 
-  async function changePassword() {
+  function changePassword() {
     if (currentPassword.length < 8) {
-      setError("The current password you entered is incorrect."); // by definition, all passwords must be >= 8 chars, so if it's not then it's wrong
+      setPwdError("The current password you entered is incorrect."); // by definition, all passwords must be >= 8 chars, so if it's not then it's wrong
       return;
     }
-    const res = await fetch("/api/login", {
-      method: "POST",
-      body: JSON.stringify({
-        username: user.username,
-        password: currentPassword,
-        dontCreateSession: true,
-      }),
-    });
-    if (res.status >= 300) {
-      setError("The current password you entered is incorrect.");
+    (async () => {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        body: JSON.stringify({
+          username: user.username,
+          password: currentPassword,
+          dontCreateSession: true,
+        }),
+      });
+      if (res.status >= 300) {
+        setPwdError("The current password you entered is incorrect.");
+        return;
+      }
+      if (newPassword.length < 8) {
+        setPwdError("Your new password must be 8 characters or longer.");
+        return;
+      }
+      if (newPassword === currentPassword) {
+        setPwdError(
+          "Your new password must be different from your old password."
+        );
+        return;
+      }
+      await fetch("/api/change-password", {
+        method: "POST",
+        body: JSON.stringify({
+          username: user.username,
+          password: newPassword,
+        }),
+      });
+      await fetch("/api/signout", {
+        method: "POST",
+        credentials: "include",
+      });
+      setUser(undefined);
+      setPwdError("");
+      router.push("/about");
       return;
-    }
-    if (newPassword.length < 8) {
-      setError("Your new password must be 8 characters or longer.");
-      return;
-    }
-    await fetch("/api/change-password", {
-      method: "POST",
-      body: JSON.stringify({
-        username: user.username,
-        password: newPassword,
-      }),
-    });
-    await fetch("/api/signout", {
-      method: "POST",
-      credentials: "include",
-    });
-    setUser(undefined);
-    setError("");
-    router.push("/about");
+    })();
     return;
   }
 
@@ -61,9 +73,27 @@ export default function Profile() {
   return (
     <div className="space-y-4">
       <h1>Profile</h1>
-      <h2>Change Password</h2>
-      <p>Input your current and new password in the fields below.</p>
-      <p>Changing your password will sign you out of all sessions.</p>
+      <div className="space-y-2">
+        <h2>Change Email</h2>
+        <p>
+          Clicking the "change email" button will send a confirmation email to
+          the new email.
+        </p>
+      </div>
+      <FormInput
+        placeholder="New Email"
+        onChange={(event) => {
+          setNewEmail(event.target.value);
+        }}
+      />
+      <div className="space-y-2">
+        <FormSubmit text="Change Email" onClick={() => {}} />
+      </div>
+      <div className="space-y-2">
+        <h2>Change Password</h2>
+        <p>Input your current and new password in the fields below.</p>
+        <p>Changing your password will sign you out of all sessions.</p>
+      </div>
       <FormInput
         type="password"
         placeholder="Current Password"
@@ -78,12 +108,15 @@ export default function Profile() {
           setNewPassword(event.target.value);
         }}
       />
-      <FormSubmit
-        text="Change Password"
-        onClick={() => {
-          changePassword();
-        }}
-      />
+      <div className="space-y-2">
+        <FormSubmit
+          text="Change Password"
+          onClick={() => {
+            changePassword();
+          }}
+        />
+        <FormError error={pwdError} />
+      </div>
       <h2>Sign Out of All Sessions</h2>
       <p>
         Clicking the button below will sign you out of all sessions,{" "}
@@ -95,9 +128,6 @@ export default function Profile() {
           SignOut();
         }}
       />
-      <div>
-        <FormError error={error} />
-      </div>
     </div>
   );
 }
