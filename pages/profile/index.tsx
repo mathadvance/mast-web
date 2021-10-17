@@ -2,6 +2,7 @@ import { FormInput, FormSubmit, FormError } from "@/components/FormComponents";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthProvider";
 import router from "next/router";
+import EmailValidator from "email-validator";
 
 export default function Profile() {
   const { user, setUser } = useAuth();
@@ -12,6 +13,22 @@ export default function Profile() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [pwdError, setPwdError] = useState("");
+
+  function changeEmail() {
+    if (!EmailValidator.validate(newEmail)) {
+      setEmailError("You must input a valid email.");
+      return;
+    }
+    fetch("/api/change-email", {
+      method: "POST",
+      body: JSON.stringify({
+        username: user.username,
+        oldEmail: user.email,
+        newEmail,
+        action: "send",
+      }),
+    });
+  }
 
   function changePassword() {
     if (currentPassword.length < 8) {
@@ -87,7 +104,13 @@ export default function Profile() {
         }}
       />
       <div className="space-y-2">
-        <FormSubmit text="Change Email" onClick={() => {}} />
+        <FormSubmit
+          text="Change Email"
+          onClick={() => {
+            changeEmail();
+          }}
+        />
+        <FormError error={emailError} />
       </div>
       <div className="space-y-2">
         <h2>Change Password</h2>
