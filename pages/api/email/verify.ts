@@ -20,16 +20,18 @@ export default async (req, res) => {
   );
 
   if (
-    redisValObject.timestamp <
+    redisValObject.timestamp !=
     user.Timestamps.most_recent_email_verification_timestamp
   ) {
     res
       .status(400)
       .send("This is not the most recently issued verification key.");
+    return;
   }
 
   if (user.power > 0) {
     res.status(400).send("This user is already verified.");
+    return;
   }
 
   mastDB

@@ -19,7 +19,9 @@ export default function Profile() {
       setEmailError("You must input a valid email.");
       return;
     }
-    fetch("/api/change-email", {
+    setEmailError("");
+    setNewEmail("");
+    fetch("/api/email/change-email", {
       method: "POST",
       body: JSON.stringify({
         username: user.username,
@@ -93,12 +95,16 @@ export default function Profile() {
       <div className="space-y-2">
         <h2>Change Email</h2>
         <p>
+          Your account's current email address is <em>{user.email}</em>.
+        </p>
+        <p>
           Clicking the "change email" button will send a confirmation email to
           the new email.
         </p>
       </div>
       <FormInput
         placeholder="New Email"
+        value={newEmail}
         onChange={(event) => {
           setNewEmail(event.target.value);
         }}

@@ -19,7 +19,7 @@ export default async (req, res) => {
     .collection("users")
     .findOne({ username: redisValObject.username });
   if (
-    redisValObject.timestamp <
+    redisValObject.timestamp !=
     user.Timestamps.most_recent_password_reset_timestamp
   ) {
     res
