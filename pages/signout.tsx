@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthProvider";
 export default function Signout() {
   const { setUser } = useAuth();
   (async () => {
-    fetch("/api/signout", {
+    fetch("/api/auth/signout", {
       method: "POST",
       credentials: "include",
     });

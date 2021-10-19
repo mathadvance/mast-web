@@ -38,7 +38,7 @@ export default function Profile() {
       return;
     }
     (async () => {
-      const res = await fetch("/api/login", {
+      const res = await fetch("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({
           username: user.username,
@@ -60,14 +60,14 @@ export default function Profile() {
         );
         return;
       }
-      await fetch("/api/change-password", {
+      await fetch("/api/profile/change-password", {
         method: "POST",
         body: JSON.stringify({
           username: user.username,
           password: newPassword,
         }),
       });
-      await fetch("/api/signout", {
+      await fetch("/api/auth/signout", {
         method: "POST",
         credentials: "include",
       });
@@ -80,7 +80,7 @@ export default function Profile() {
   }
 
   function SignOut() {
-    fetch("/api/set-earliest-acceptable-auth", {
+    fetch("/api/auth/set-earliest-acceptable-auth", {
       method: "POST",
       body: user.username,
       credentials: "include",

@@ -19,7 +19,7 @@ export default function Login() {
   const { setUser } = useAuth();
 
   async function Submit() {
-    const res = await fetch("/api/login", {
+    const res = await fetch("/api/auth/login", {
       method: "POST",
       body: JSON.stringify({
         username,
@@ -32,7 +32,7 @@ export default function Login() {
       return;
     } else {
       setError("");
-      const userRes = await fetch("/api/auth", {
+      const userRes = await fetch("/api/auth/auth", {
         method: "POST",
         credentials: "include",
       });

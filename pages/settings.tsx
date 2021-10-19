@@ -10,7 +10,7 @@ export default function Settings() {
   const { theme, setTheme, sideBarColor, setSideBarColor } = useTheme();
 
   function onSubmit() {
-    fetch("/api/settings", {
+    fetch("/api/profile/settings", {
       method: "POST",
       body: JSON.stringify({
         username: user.username,

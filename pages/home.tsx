@@ -40,7 +40,7 @@ export default function Home() {
 
   function User() {
     function become_applicant() {
-      fetch("/api/change-power", {
+      fetch("/api/profile/change-power", {
         method: "POST",
         body: JSON.stringify({ username: user.username, power: 2 }),
       });

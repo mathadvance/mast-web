@@ -24,7 +24,7 @@ export default function Signup() {
 
   async function Submit() {
     setUserProperty("graduation_year", gradYear);
-    const res = await fetch("/api/signup", {
+    const res = await fetch("/api/auth/signup", {
       method: "POST",
       body: JSON.stringify(newUser),
     });
@@ -37,7 +37,7 @@ export default function Signup() {
         method: "POST",
         body: newUser.username,
       })
-      await fetch("/api/login", {
+      await fetch("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({
           username: newUser.username,
@@ -45,7 +45,7 @@ export default function Signup() {
           rememberMe: false,
         }),
       });
-      const userRes = await fetch("/api/auth", {
+      const userRes = await fetch("/api/auth/auth", {
         method: "POST",
         credentials: "include",
       });

@@ -8,7 +8,7 @@ export default function AuthProvider({ children }) {
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("/api/auth", {
+      const res = await fetch("/api/auth/auth", {
         method: "POST",
         credentials: "include",
       });
