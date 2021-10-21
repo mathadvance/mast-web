@@ -1,10 +1,12 @@
 import {
   FormInput,
   FormSubmit,
+  FormFileUpload,
   FormError,
   FormTextArea,
 } from "@/components/FormComponents";
 import NextLink from "next/link";
+import { useState } from "react";
 
 export default function AppPortal() {
   let formNumber = 1;
@@ -47,6 +49,8 @@ export default function AppPortal() {
       </div>
     );
   }
+
+  const [error, setError] = useState("");
   return (
     <>
       <h1>Application Portal</h1>
@@ -103,7 +107,7 @@ export default function AppPortal() {
         .
       </p>
       <p>
-        Please have your full name (first and last) appear in the PDF title and the PDF file itself. It's no big deal if you forget, but this makes it more convenient for me when I'm going through applications.
+        Please have your full name (first and last) appear in the contents of the PDF file. It's no big deal if you forget, but this makes it more convenient for me when I'm going through applications.
       </p>
       <p>
         There is a filesize limit of 2MB. In practice, the only way you can get
@@ -115,10 +119,12 @@ export default function AppPortal() {
         LaTeX is typeset well, or, if you are handwriting, <em>be very neat</em>
         .
       </p>
+      <FormFileUpload text="PDF File" accept="application/pdf" />
       <div className="grid grid-cols-2 pt-2 gap-x-16">
         <FormSubmit text="Save" />
         <FormSubmit text="Submit" />
       </div>
+      <FormError error={error} />
     </>
   );
 }

@@ -103,6 +103,15 @@ const FormTextArea = ({
   );
 };
 
+const FormFileUpload = ({ text = "", accept }: { text: string, accept?: string }) => {
+  return <div className="flex space-x-2">
+    <em>
+      {text}*
+    </em>
+    <input type="file" accept={accept || null} />
+  </div>
+}
+
 const FormSubmit = ({
   text = "",
   onClick = () => { },
@@ -131,4 +140,4 @@ const FormError = ({ error }: any) => {
   );
 };
 
-export { FormBox, FormInput, FormTextArea, FormSubmit, FormError };
+export { FormBox, FormInput, FormTextArea, FormFileUpload, FormSubmit, FormError };
