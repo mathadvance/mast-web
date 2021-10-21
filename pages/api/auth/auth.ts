@@ -35,7 +35,7 @@ const Auth = async (req, res) => {
       } else {
         if (
           new Date(Date.now()) >
-          new Date(redisLastRegenerated.getTime() + 1000 * 60 * 60) &&
+            new Date(redisLastRegenerated.getTime() + 1000 * 60 * 60) &&
           redisValObject.regenerate
         ) {
           // if it's an hour past when we set the token,
