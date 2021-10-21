@@ -3,13 +3,11 @@ import { useAuth } from "@/contexts/AuthProvider";
 
 export default function Signout() {
   const { setUser } = useAuth();
-  (async () => {
-    fetch("/api/auth/signout", {
-      method: "POST",
-      credentials: "include",
-    });
-    setUser(undefined);
-    router.push("/about");
-  })();
+  fetch("http://localhost:3000/api/auth/signout", {
+    method: "POST",
+    credentials: "include",
+  });
+  setUser(undefined);
+  router.push("/about");
   return null;
 }
