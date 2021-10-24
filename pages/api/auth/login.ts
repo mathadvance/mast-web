@@ -17,11 +17,9 @@ export default async (req, res) => {
       res.status(400).send("There is no user associated with this email.");
     }
   }
-  const user = await mastDB
-    .collection("users")
-    .findOne({
-      username: { $eq: request.username },
-    });
+  const user = await mastDB.collection("users").findOne({
+    username: { $eq: request.username },
+  });
   if (!user) {
     res.status(400).send("There is no user associated with this username.");
     return;
@@ -44,10 +42,10 @@ export default async (req, res) => {
         username: request.username,
         timestamp: Date.now(),
         regenerate: request.rememberMe,
-        lastRegenerated: Date.now()
+        lastRegenerated: Date.now(),
       });
 
-      const cookies = new Cookies(req, res);
+      const cookies = new Cookies(req, res, { secure: true });
 
       cookies.set("session", sessionID, {
         maxAge: Date.now() + maxAge,

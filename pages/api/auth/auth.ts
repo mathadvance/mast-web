@@ -4,7 +4,7 @@ import keygen from "@/utils/server/keygen";
 import Cookies from "cookies";
 
 const Auth = async (req, res) => {
-  const cookies = new Cookies(req, res);
+  const cookies = new Cookies(req, res, { secure: true });
   const session = cookies.get("session");
   if (session) {
     const redisValString = await redis_sessionIDs.get(session);

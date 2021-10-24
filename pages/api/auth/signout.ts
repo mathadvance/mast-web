@@ -1,8 +1,8 @@
 import { redis_sessionIDs } from "@/utils/server/redis";
-import Cookies from "cookies"
+import Cookies from "cookies";
 
 export default async (req, res) => {
-  const cookies = new Cookies(req, res);
+  const cookies = new Cookies(req, res, { secure: true });
   const session = cookies.get("session");
   if (session) {
     cookies.set("session");
