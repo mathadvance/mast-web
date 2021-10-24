@@ -7,7 +7,7 @@
    viewBox="0 0 85.286477 27.17771"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1 (c4e8f9ed74, 2021-05-24)"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
    sodipodi:docname="mast.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -25,11 +25,11 @@
      showgrid="false"
      inkscape:zoom="2"
      inkscape:cx="30.75"
-     inkscape:cy="66.5"
-     inkscape:window-width="958"
-     inkscape:window-height="1034"
-     inkscape:window-x="960"
-     inkscape:window-y="46"
+     inkscape:cy="66.25"
+     inkscape:window-width="1920"
+     inkscape:window-height="1080"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
@@ -49,30 +49,27 @@
        d="m 87.839822,105.87573 c -22.231414,4.38898 7.978781,12.41355 13.449808,14.24551 l 0.012,2.20431 c -5.942653,-1.97797 -38.174394,-14.0355 -14.010215,-16.86743 z"
        id="path1332"
        sodipodi:nodetypes="ccccc" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.2778px;line-height:1.25;font-family:'Noto Sans Display';-inkscape-font-specification:'Noto Sans Display';word-spacing:0px;stroke-width:0.264583"
-       x="49.016911"
-       y="122.24339"
-       id="text6736"><tspan
-         sodipodi:role="line"
-         id="tspan6734"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.2778px;font-family:'Noto Sans Display';-inkscape-font-specification:'Noto Sans Display';fill:#1d4ed8;fill-opacity:1;stroke-width:0.264583"
-         x="49.016911"
-         y="122.24339">M</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:35.2778px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583"
-       x="101.17759"
-       y="122.27727"
-       id="text7994"><tspan
-         sodipodi:role="line"
-         id="tspan7992"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:35.2778px;font-family:'Noto Sans Display';-inkscape-font-specification:'Noto Sans Display';fill:#1d4ed8;fill-opacity:1;stroke-width:0.264583"
-         x="101.17759"
-         y="122.27727"
-         dx="0"
-         dy="0"
-         rotate="0 0 0">ST</tspan></text>
+    <g
+       aria-label="M"
+       id="text6736"
+       style="font-size:35.2778px;line-height:1.25;font-family:'Noto Sans Display';-inkscape-font-specification:'Noto Sans Display';word-spacing:0px;stroke-width:0.264583">
+      <path
+         d="m 62.634142,122.24339 -7.620005,-22.0839 h -0.141111 q 0.105833,1.09361 0.176389,2.96333 0.07055,1.83445 0.07055,3.84528 v 15.27529 H 52.22719 V 97.055043 h 4.586115 l 7.161393,20.637517 h 0.141112 l 7.302505,-20.637517 h 4.586114 v 25.188347 h -3.104447 v -15.48695 q 0,-1.83445 0.07056,-3.63362 0.105833,-1.79916 0.176389,-2.92805 h -0.141111 l -7.761117,22.04862 z"
+         style="fill:#1d4ed8"
+         id="path8032" />
+    </g>
+    <g
+       aria-label="ST"
+       id="text7994"
+       style="font-size:35.2778px;line-height:1.25;letter-spacing:0px;word-spacing:0px;stroke-width:0.264583">
+      <path
+         d="m 117.86399,115.53921 q 0,3.35139 -2.29306,5.22111 -2.29305,1.86973 -6.17361,1.86973 -1.97556,0 -3.70417,-0.3175 -1.69334,-0.3175 -2.82223,-0.88195 v -3.03389 q 1.23473,0.56444 2.99862,1.02306 1.79916,0.45861 3.66889,0.45861 2.57528,0 3.88056,-1.09361 1.30528,-1.09362 1.30528,-2.96334 0,-1.23472 -0.52917,-2.08139 -0.49389,-0.84667 -1.69334,-1.55222 -1.19944,-0.74084 -3.28083,-1.55223 -2.92806,-1.16416 -4.51556,-2.8575 -1.55222,-1.69333 -1.55222,-4.62139 0,-2.01084 0.9525,-3.421948 0.98778,-1.44639 2.68111,-2.222501 1.72861,-0.776112 3.98639,-0.776112 1.94028,0 3.56306,0.388056 1.62278,0.388056 2.99861,1.023056 l -0.98778,2.716389 q -1.27,-0.56444 -2.71639,-0.952499 -1.41111,-0.388056 -2.92805,-0.388056 -2.15195,0 -3.28084,1.023055 -1.09361,0.98778 -1.09361,2.64584 0,1.27 0.49389,2.11666 0.49389,0.84667 1.62278,1.51695 1.12889,0.67028 2.99861,1.44639 2.08139,0.81139 3.4925,1.76389 1.44639,0.91722 2.18723,2.2225 0.74083,1.30528 0.74083,3.28084 z"
+         style="font-family:'Noto Sans Display';-inkscape-font-specification:'Noto Sans Display';fill:#1d4ed8"
+         id="path11192" />
+      <path
+         d="m 130.24644,122.27727 h -3.13973 V 99.875863 h -7.33778 v -2.786946 h 17.74474 v 2.786946 h -7.26723 z"
+         style="font-family:'Noto Sans Display';-inkscape-font-specification:'Noto Sans Display';fill:#1d4ed8"
+         id="path11194" />
+    </g>
   </g>
 </svg>
