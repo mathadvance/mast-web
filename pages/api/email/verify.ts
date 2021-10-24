@@ -40,6 +40,12 @@ export default async (req, res) => {
       { username: { $eq: redisValObject.username } },
       { $set: { power: 1 }, $unset: { destructionDate: "" } }
     );
+  mastDB
+    .collection("email_proxy")
+    .updateOne(
+      { username: { $eq: redisValObject.username } },
+      { $set: { power: 1 }, $unset: { destructionDate: "" } }
+    );
   redis_emailVerificationIDs.del(req.body);
   res.status(200).send("Successfully verified email.");
   return;
