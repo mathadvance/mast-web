@@ -16,9 +16,8 @@ export default function Signup() {
   const [newUser, setNewUser] = useState(new User());
   const [gradYear, setGradYear] = useState("");
   const setUserProperty = (property: string, value: string | number) => {
-    const updatedUser: User = newUser;
-    updatedUser[property] = value.toString();
-    setNewUser(updatedUser);
+    newUser[property] = value.toString();
+    setNewUser(newUser);
   };
   const [error, setError] = useState("");
 
