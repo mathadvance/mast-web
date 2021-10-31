@@ -13,7 +13,7 @@
     @apply text-2xl text-blue-800 dark:text-blue-500 font-bold;
   }
   h3 {
-    @apply text-xl font-bold;
+    @apply text-lg font-bold;
   }
   em {
     @apply text-pink-800 dark:text-pink-500 not-italic font-bold;
