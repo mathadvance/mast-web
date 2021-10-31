@@ -32,7 +32,7 @@ export default function Login() {
       return;
     } else {
       setError("");
-      const userRes = await fetch("/api/auth/auth", {
+      const userRes = await fetch("/api/auth", {
         method: "POST",
         credentials: "include",
       });

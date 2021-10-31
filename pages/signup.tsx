@@ -35,7 +35,7 @@ export default function Signup() {
       fetch("/api/email/send-verification", {
         method: "POST",
         body: newUser.username,
-      })
+      });
       await fetch("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({
@@ -44,7 +44,7 @@ export default function Signup() {
           rememberMe: false,
         }),
       });
-      const userRes = await fetch("/api/auth/auth", {
+      const userRes = await fetch("/api/auth", {
         method: "POST",
         credentials: "include",
       });
