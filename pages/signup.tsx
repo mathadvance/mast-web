@@ -99,6 +99,7 @@ export default function Signup() {
       <FormInput
         placeholder="Password"
         type="password"
+        autoComplete="new-password"
         desc={
           <>
             It is recommended you use a{` `}

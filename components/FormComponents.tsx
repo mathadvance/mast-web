@@ -25,12 +25,12 @@ const FormBox = ({ children }) => {
 
 const FormInput = ({
   placeholder = "",
-  onChange = () => { },
+  onChange = () => {},
   type = "text",
   desc,
   value = undefined,
   pattern = undefined,
-  autoComplete = true,
+  autoComplete = "off",
 }: {
   placeholder?: string;
   onChange?: any;
@@ -38,14 +38,14 @@ const FormInput = ({
   desc?: any;
   value?: string | number;
   pattern?: string;
-  autoComplete?: boolean;
+  autoComplete?: string;
 }) => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div>
       <input
         className="w-full px-4 h-11 rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900 autofill:bg-blue-100 dark:autofill:bg-gray-700"
-        autoComplete={autoComplete ? "on" : "off"}
+        autoComplete={autoComplete}
         placeholder={placeholder}
         onChange={onChange}
         type={type === "password" ? (showPassword ? "text" : "password") : type}
@@ -54,8 +54,9 @@ const FormInput = ({
       />
       {desc && (
         <div
-          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${type != "password" && `-mb-2`
-            }`}
+          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${
+            type != "password" && `-mb-2`
+          }`}
         >
           {desc}
         </div>
@@ -74,25 +75,28 @@ const FormInput = ({
 };
 
 const FormTextArea = ({
-  autoComplete = true,
+  autoComplete = "off",
   placeholder = "",
-  onChange = () => { },
+  onChange = () => {},
   desc,
   minHeight = "min-h-[8rem]",
+  value,
 }: {
-  autoComplete?: boolean;
+  autoComplete?: string;
   placeholder?: string;
   onChange?: any;
   desc?: any;
   minHeight?: string; // Should be of the form min-h-[8rem], best to use rem and not px
+  value?: string | number;
 }) => {
   return (
     <div>
       <textarea
         className={`w-full px-4 py-2 ${minHeight} rounded-md ring-1 ring-gray-200 dark:ring-gray-800 focus:outline-none focus:ring-blue-500 dark:focus:ring-blue-600 bg-white dark:bg-gray-900 autofill:bg-blue-100 dark:autofill:bg-gray-700`}
-        autoComplete={autoComplete ? "on" : "off"}
+        autoComplete={autoComplete}
         placeholder={placeholder}
         onChange={onChange}
+        value={value}
       />
       {desc && (
         <div className="mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 -mb-2">
@@ -103,18 +107,26 @@ const FormTextArea = ({
   );
 };
 
-const FormFileUpload = ({ text = "", accept }: { text: string, accept?: string }) => {
-  return <div className="flex space-x-2">
-    <em>
-      {text}*
-    </em>
-    <input type="file" accept={accept || null} />
-  </div>
-}
+const FormFileUpload = ({
+  text,
+  accept,
+  onChange = () => {},
+}: {
+  text: string;
+  accept?: string;
+  onChange?;
+}) => {
+  return (
+    <div className="flex space-x-2">
+      <em>{text}*</em>
+      <input type="file" accept={accept || null} onChange={onChange} />
+    </div>
+  );
+};
 
 const FormSubmit = ({
   text = "",
-  onClick = () => { },
+  onClick = () => {},
   disabled = false,
 }: {
   text?: string;
@@ -140,4 +152,11 @@ const FormError = ({ error }: any) => {
   );
 };
 
-export { FormBox, FormInput, FormTextArea, FormFileUpload, FormSubmit, FormError };
+export {
+  FormBox,
+  FormInput,
+  FormTextArea,
+  FormFileUpload,
+  FormSubmit,
+  FormError,
+};
