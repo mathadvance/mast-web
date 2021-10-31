@@ -79,12 +79,14 @@ const FormTextArea = ({
   onChange = () => { },
   desc,
   minHeight = "min-h-[8rem]",
+  value,
 }: {
   autoComplete?: boolean;
   placeholder?: string;
   onChange?: any;
   desc?: any;
   minHeight?: string; // Should be of the form min-h-[8rem], best to use rem and not px
+  value?: string | number
 }) => {
   return (
     <div>
@@ -93,6 +95,7 @@ const FormTextArea = ({
         autoComplete={autoComplete ? "on" : "off"}
         placeholder={placeholder}
         onChange={onChange}
+        value={value}
       />
       {desc && (
         <div className="mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 -mb-2">
@@ -103,12 +106,12 @@ const FormTextArea = ({
   );
 };
 
-const FormFileUpload = ({ text = "", accept }: { text: string, accept?: string }) => {
+const FormFileUpload = ({ text, accept, onChange = () => { } }: { text: string, accept?: string, onChange?}) => {
   return <div className="flex space-x-2">
     <em>
       {text}*
     </em>
-    <input type="file" accept={accept || null} />
+    <input type="file" accept={accept || null} onChange={onChange} />
   </div>
 }
 
