@@ -2,22 +2,20 @@
 
 Thie is the GitHub repository for the MAST website.
 All the code that runs the website is here.
-Currently, there's no backend,
-but we anticipate having backend very soon.
 
-Our stack is
-
-    React JS + Next JS + Tailwind CSS
+Our frontend tools are React JS, Next JS, and Tailwind CSS, and our backend tools are MongoDB and Redis.
 
 I cannot make this clear enough:
-**these elements are completely orthogonal**.
-There are tools that make them play better together,
-but these tools do not serve the same purpose.
+**these tools are completely orthogonal**.
+There are integrations and drivers that make them work better together,
+but it is important to know what handles what.
 
-In particular, React is the framework,
+For client-side: React is the framework,
 Next is used for rendering
 (it takes a hybrid server-side and client-side rendering approach),
 and Tailwind is used for styling the frontend.
+
+For server-side: MongoDB is used to store and retrieve data, while Redis is used for session (login) management. Next JS and `fetch` are used as middleware to connect to these databases in the `pages/api` folder.
 
 This project is using `yarn` as its package manager.
 
