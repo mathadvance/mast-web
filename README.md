@@ -50,47 +50,31 @@ you will want .env.local to look like this:
 
 (Replace `<password>` with the password of the dbOwner user `dbOwner`.)
 
-To be honest, you probably don't need the `DOMAIN` or any of the `NOREPLY` environment variables. I'm just including it for completeness.
-
 You can change the value of `MONGODB_DB` if you really wish to do so, but there is not really a good reason to do so. If you do, replace `mast` in the instructions with whatever your database name is.
 
-After installing `mongodb` locally and starting the mongodb services, run `mongosh` and type the following commands **AFTER** authenticating into dbOwner:
+Mongo is a bit tricky to setup. I won't cover installation, that depends on your distribution of Linux and is pretty easy anyway. To enter the mongo shell, run `mongosh`. Then, in the mongo shell, run
 
     use mast
-    db.createCollection("users")
-    db.users.createIndex( { "destructionDate": 1 }, { expireAfterSeconds: 0 } )
-    db.users.createIndex({ "username": 1 }, {unique: true})
-    db.createCollection("email_proxy")
-    db.email_proxy.createIndex( { "destructionDate": 1 }, { expireAfterSeconds: 0 } )
-    db.email_proxy.createIndex({ "email": 1 }, { unique: true })
+    db.createUser({user: "dbOwner", pwd: "<password>", roles: ["dbOwner"]})
 
-In production we create a `dbOwner` user and require authentication for most operations. But this should not be necessary in local testing.
+where `<password>` indicates the password passed into `MONGODB_URI`.
+Then exit the mongo shell and run `node mongo-scripts/mongo-setup.js` _inside_ the root directory of this repository.
+
+In production, you want to enable authentication in Mongo. But this is easily Googleable, so I won't cover it here.
 
 For `redis` just start up the service. Make a password and add authentication information to `REDIS_URI` in production.
 
 ## Structure
 
-The top-level directory names are quite self-explanatory.
-Build tasks are automated via `cargo-make`.
-
-### Client
-
 Very roughly, this follows
 [Tania Rascia's](https://www.taniarascia.com/react-architecture-directory-structure/#utils) guide,
 plus a separate directory for the server.
 
-- public: Any files I want the public to be able to view
-  (hence the name).
-- resources: PDFs that would be filed under math.
-- reports: PDFs that would be filed under writing.
+- public: Any files I want the public to be able to view (hence the name).
 - styles: Self-explanatory.
 - components: Anything that is mostly visual.
-  Lines can get a little blurry between components and utils.
-- utils: Anything more complicated than a slew of `<div className="...">`
-  - server: Handles logic on the clientside before it is sent to the server.
-- pages: Doh.
-  - api: Doh. (This is what actually sends stuff to the server.)
-
-### Server
-
-We use the `actix-web` framework written in Rust.
+- utils: Clientside types, logic, etc.
+  - server: Handles logic on the clientside before it is sent to the server. (Think of this as middleware tools.)
+  - email_templates: Duh.
+- pages: Duh.
+  - api: Duh. (This is what actually sends and retrieves stuff from the server.)
