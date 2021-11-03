@@ -25,12 +25,12 @@ const FormBox = ({ children }) => {
 
 const FormInput = ({
   placeholder = "",
-  onChange = () => {},
+  onChange = () => { },
   type = "text",
   desc,
   value = undefined,
   pattern = undefined,
-  autoComplete = "off",
+  autoComplete = "new-password", // need "new-password" to force browser to not save, period
 }: {
   placeholder?: string;
   onChange?: any;
@@ -54,9 +54,8 @@ const FormInput = ({
       />
       {desc && (
         <div
-          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${
-            type != "password" && `-mb-2`
-          }`}
+          className={`mt-2 px-4 text-sm text-gray-500 dark:text-gray-400 ${type != "password" && `-mb-2`
+            }`}
         >
           {desc}
         </div>
@@ -75,19 +74,19 @@ const FormInput = ({
 };
 
 const FormTextArea = ({
-  autoComplete = "off",
   placeholder = "",
-  onChange = () => {},
+  onChange = () => { },
   desc,
   minHeight = "min-h-[8rem]",
   value,
+  autoComplete = "new-password", // need "new-password" to force browser to not save, period
 }: {
-  autoComplete?: string;
   placeholder?: string;
   onChange?: any;
   desc?: any;
   minHeight?: string; // Should be of the form min-h-[8rem], best to use rem and not px
   value?: string | number;
+  autoComplete?: string;
 }) => {
   return (
     <div>
@@ -110,7 +109,7 @@ const FormTextArea = ({
 const FormFileUpload = ({
   text,
   accept,
-  onChange = () => {},
+  onChange = () => { },
 }: {
   text: string;
   accept?: string;
@@ -126,7 +125,7 @@ const FormFileUpload = ({
 
 const FormSubmit = ({
   text = "",
-  onClick = () => {},
+  onClick = () => { },
   disabled = false,
 }: {
   text?: string;

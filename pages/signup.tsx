@@ -81,6 +81,7 @@ export default function Signup() {
       />
       <FormInput
         placeholder="Username"
+        autoComplete="username"
         onChange={(event) => {
           setUserProperty("username", event.target.value);
         }}
@@ -99,7 +100,6 @@ export default function Signup() {
       <FormInput
         placeholder="Password"
         type="password"
-        autoComplete={false}
         desc={
           <>
             It is recommended you use a{` `}

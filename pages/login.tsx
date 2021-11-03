@@ -48,14 +48,14 @@ export default function Login() {
       <h1 className="font-normal">Login</h1>
       <FormInput
         placeholder="Username/Email"
-        autoComplete={true}
+        autoComplete="username"
         onChange={(event) => {
           setUsername(event.target.value);
         }}
       />
       <FormInput
         placeholder="Password"
-        autoComplete={true}
+        autoComplete="on"
         type="password"
         onChange={(event) => {
           setPassword(event.target.value);
