@@ -69,7 +69,10 @@ export const UserError = (user: User) => {
   if (user.last_name.length > 20) {
     return "Your last name may not be longer than 20 characters.";
   }
-  if (!EmailValidator.validate(user.email)) {
+  if (
+    !EmailValidator.validate(user.email) ||
+    user.email.toLowerCase() != user.email
+  ) {
     return "Please enter a valid email address.";
   }
   if (!user.username || user.username === "") {
