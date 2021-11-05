@@ -96,7 +96,7 @@ export default function AppPortal() {
     formData.append("answers", JSON.stringify(answers));
     formData.append("PDF", PDF);
 
-    const res = await fetch("/api/app", {
+    const res = await fetch("/api/app/upload", {
       method: "POST",
       body: formData,
     });
@@ -114,8 +114,7 @@ export default function AppPortal() {
     <>
       <h1>Application Portal</h1>
       <p>
-        Clicking the "Save" button will save your responses, except for the
-        uploaded PDF, to your{" "}
+        Clicking the "Save" button will save your responses to your{" "}
         <NextLink href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">
           <a className="blue-link">local storage</a>
         </NextLink>
@@ -142,6 +141,8 @@ export default function AppPortal() {
             placeholder={question.placeholder}
             onChange={(event) => { setAnswer(question.answer, question.category, event.target.value) }}
             number={index + 1}
+            type={question.type}
+            desc={question.desc}
           />
         })}
       </div>
@@ -167,6 +168,8 @@ export default function AppPortal() {
             placeholder={question.placeholder}
             onChange={(event) => { setAnswer(question.answer, question.category, event.target.value) }}
             number={index + 1}
+            type={question.type}
+            desc={question.desc}
           />
         })}
       </div>
@@ -184,8 +187,7 @@ export default function AppPortal() {
         convenient for me when I'm going through applications.
       </p>
       <p>
-        There is a filesize limit of 2MB. In practice, the only way you can get
-        a PDF file under 2MB is by using{" "}
+        There is a filesize limit of 512KB. By design, it is nearly impossible to get a PDF under 512KB without using{" "}
         <NextLink href="/resources/latex">
           <a className="blue-link">LaTeX</a>
         </NextLink>{" "}
@@ -193,8 +195,7 @@ export default function AppPortal() {
       </p>
       <p>
         We will not grade papers that we cannot read. So please, make sure your
-        LaTeX is typeset well, or, if you are handwriting, <em>be very neat</em>
-        .
+        LaTeX is typeset well.
       </p>
       <FormFileUpload
         text="PDF File"
