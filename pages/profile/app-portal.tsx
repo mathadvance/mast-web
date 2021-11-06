@@ -15,6 +15,7 @@ import {
 import NextLink from "next/link";
 import { useState } from "react";
 import _ from "lodash";
+import router from "next/router";
 
 const QuestionComponent = ({
   question,
@@ -118,6 +119,7 @@ export default function AppPortal() {
 
     if (res.status === 200) {
       setError("");
+      router.push("/home");
       return;
     } else {
       setError(await res.text());

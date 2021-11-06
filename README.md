@@ -54,7 +54,7 @@ You should not modify `DOMAIN`.
 
 The value of `SEASON` should be whatever the current MAST season is, but it doesn't really matter what you set it to.
 
-Inside `CONTENT_DIR`, you may want to pull a couple of test units, or make a couple of your own. See [mast](https://github.com/mathadvance/mast) for more details. Also make sure that the directories `CONTENT_DIR` and `UPLOAD_DIR` really exist on your system. File uploads _should_ work if you are using Windows, but I haven't tried.
+Inside `CONTENT_DIR`, you may want to pull a couple of test units, or make a couple of your own. See [mast](https://github.com/mathadvance/mast) for more details. File uploads _should_ work if you are using Windows, but I haven't tried.
 
 Replace `<password>` with the password of the dbOwner user `dbOwner`.
 
