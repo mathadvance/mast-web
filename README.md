@@ -34,6 +34,10 @@ you will want .env.local to look like this:
 
     DOMAIN=https://mast.mathadvance.org
 
+    SEASON=4
+    CONTENT_DIR=/path/to/content_dir
+    UPLOAD_DIR=/path/to/upload_dir
+
     MONGODB_URI=mongodb://dbOwner:<password>@localhost:27017/?authSource=mast&readPreference=primary
     MONGODB_DB=mast
 
@@ -46,7 +50,13 @@ you will want .env.local to look like this:
     NOREPLY_EMAIL=
     NOREPLY_PASSWD=
 
-(Replace `<password>` with the password of the dbOwner user `dbOwner`.)
+You should not modify `DOMAIN`.
+
+The value of `SEASON` should be whatever the current MAST season is, but it doesn't really matter what you set it to.
+
+Inside `CONTENT_DIR`, you may want to pull a couple of test units, or make a couple of your own. See [mast](https://github.com/mathadvance/mast) for more details. Also make sure that the directories `CONTENT_DIR` and `UPLOAD_DIR` really exist on your system. File uploads _should_ work if you are using Windows, but I haven't tried.
+
+Replace `<password>` with the password of the dbOwner user `dbOwner`.
 
 You can change the value of `MONGODB_DB` if you really wish to do so, but there is not really a good reason to do so. If you do, replace `mast` in the instructions with whatever your database name is.
 
