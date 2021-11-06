@@ -20,50 +20,57 @@ export default async (req, res) => {
     }
   };
   form.parse(req, (err, fields, files) => {
-    console.log(fields);
-    if (err) {
-      console.log(err);
-      if (err.toString().indexOf("maxFileSize exceeded") > -1) {
-        if (!res.headerSent) {
-          return res.status(400).send("Maximum file size of 512 KB exceeded.");
+    mastDB
+      .collection("users")
+      .findOne({ username: fields.username })
+      .then((user) => {
+        if (user.data.applied) {
+          return res.status(400).send("You've already applied!");
         }
-      } else {
-        return res.status(500).send(err);
-      }
-    }
-    if (!files.PDF) {
-      return res.status(400).send("The file sent is not a valid PDF.");
-    }
+        if (err) {
+          console.log(err);
+          if (err.toString().indexOf("maxFileSize exceeded") > -1) {
+            return res
+              .status(400)
+              .send("Maximum file size of 512 KB exceeded.");
+          } else {
+            return res.status(500).send(err);
+          }
+        }
+        if (!files.PDF) {
+          return res.status(400).send("The file sent is not a valid PDF.");
+        }
 
-    // at this point we know everything succeeds, write stuff to disk
+        // at this point we know everything succeeds, write stuff to disk
 
-    mastDB.collection("users").updateOne(
-      { username: fields.username },
-      {
-        $set: {
-          "data.applied": true,
-        },
-      }
-    );
+        mastDB.collection("users").updateOne(
+          { username: fields.username },
+          {
+            $set: {
+              "data.applied": true,
+            },
+          }
+        );
 
-    mastDB.collection("applications").insertOne({
-      fields,
-    });
+        mastDB.collection("applications").insertOne({
+          fields,
+        });
 
-    mv(
-      files.PDF.path,
-      path.join(
-        process.env.UPLOAD_DIR,
-        "applications",
-        `${fields.username}.PDF`
-      ),
-      { mkdirp: true },
-      (err) => {
-        if (err) console.log(err);
-      }
-    );
+        mv(
+          files.PDF.path,
+          path.join(
+            process.env.UPLOAD_DIR,
+            "applications",
+            `${fields.username}.PDF`
+          ),
+          { mkdirp: true },
+          (err) => {
+            if (err) console.log(err);
+          }
+        );
 
-    return res.status(200).send("Application successfully submitted.");
+        return res.status(200).send("Application successfully submitted.");
+      });
   });
 };
 

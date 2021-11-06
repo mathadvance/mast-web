@@ -127,6 +127,11 @@ export default function AppPortal() {
     }
   }
 
+  if (user.data.applied) {
+    router.push("/home");
+    return null;
+  }
+
   return (
     <>
       <h1>Application Portal</h1>

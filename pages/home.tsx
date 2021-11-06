@@ -75,6 +75,17 @@ export default function Home() {
   }
 
   function Applicant() {
+    if (user.data.applied) {
+      return (
+        <div className="space-y-4">
+          <p>
+            Congratulations on applying for MAST! The staff team will get back
+            to you regarding your application.
+          </p>
+        </div>
+      );
+    }
+
     return (
       <div className="space-y-4">
         <p>
