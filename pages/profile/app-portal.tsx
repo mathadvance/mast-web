@@ -7,7 +7,10 @@ import {
 } from "@/components/FormComponents";
 
 import { useAuth } from "@/contexts/AuthProvider";
-import { bgQuestions, contestQuestions } from "@/utils/applications/Season4Questions";
+import {
+  bgQuestions,
+  contestQuestions,
+} from "@/utils/applications/Season4Questions";
 
 import NextLink from "next/link";
 import { useState } from "react";
@@ -19,7 +22,7 @@ const QuestionComponent = ({
   placeholder,
   desc,
   type = "input",
-  onChange = function (event) { },
+  onChange = function (event) {},
 }: {
   question: string;
   number;
@@ -41,7 +44,7 @@ const QuestionComponent = ({
           placeholder={placeholder}
           desc={desc}
           onChange={(event) => {
-            onChange(event)
+            onChange(event);
           }}
         />
       )}
@@ -50,7 +53,7 @@ const QuestionComponent = ({
           placeholder={placeholder}
           desc={desc}
           onChange={(event) => {
-            onChange(event)
+            onChange(event);
           }}
         />
       )}
@@ -64,12 +67,24 @@ export default function AppPortal() {
   const [answers, setAnswers] = useState({});
 
   function allQuestionsAnswered() {
-    for (const question in answers) {
-      if (question === "") {
-        return false;
+    let answered = true;
+    bgQuestions.forEach((question) => {
+      if (
+        !answers[question.category] ||
+        !answers[question.category][question.answer]
+      ) {
+        answered = false;
       }
-    }
-    return true;
+    });
+    contestQuestions.forEach((question) => {
+      if (
+        !answers[question.category] ||
+        !answers[question.category][question.answer]
+      ) {
+        answered = false;
+      }
+    });
+    return answered;
   }
 
   function setAnswer(answer: string, category: string, value: string) {
@@ -82,7 +97,7 @@ export default function AppPortal() {
   const [error, setError] = useState("");
 
   async function Submit() {
-    if (!allQuestionsAnswered) {
+    if (!allQuestionsAnswered()) {
       setError("You must answer every question.");
       return;
     }
@@ -136,14 +151,23 @@ export default function AppPortal() {
       </p>
       <div className="space-y-4">
         {bgQuestions.map((question, index) => {
-          return <QuestionComponent
-            question={question.question}
-            placeholder={question.placeholder}
-            onChange={(event) => { setAnswer(question.answer, question.category, event.target.value) }}
-            number={index + 1}
-            type={question.type}
-            desc={question.desc}
-          />
+          return (
+            <QuestionComponent
+              question={question.question}
+              placeholder={question.placeholder}
+              onChange={(event) => {
+                setAnswer(
+                  question.answer,
+                  question.category,
+                  event.target.value
+                );
+              }}
+              number={index + 1}
+              type={question.type}
+              desc={question.desc}
+              key={index}
+            />
+          );
         })}
       </div>
       <h2>Contest Results</h2>
@@ -163,14 +187,23 @@ export default function AppPortal() {
       </p>
       <div className="space-y-4">
         {contestQuestions.map((question, index) => {
-          return <QuestionComponent
-            question={question.question}
-            placeholder={question.placeholder}
-            onChange={(event) => { setAnswer(question.answer, question.category, event.target.value) }}
-            number={index + 1}
-            type={question.type}
-            desc={question.desc}
-          />
+          return (
+            <QuestionComponent
+              question={question.question}
+              placeholder={question.placeholder}
+              onChange={(event) => {
+                setAnswer(
+                  question.answer,
+                  question.category,
+                  event.target.value
+                );
+              }}
+              number={index + 1}
+              type={question.type}
+              desc={question.desc}
+              key={index}
+            />
+          );
         })}
       </div>
       <h2>Problems</h2>
@@ -184,10 +217,12 @@ export default function AppPortal() {
       <p>
         Please have your full name (first and last) appear in the contents of
         the PDF file. It's no big deal if you forget, but this makes it more
-        convenient for me when I'm going through applications.
+        convenient for me when I'm going through applications. (The filename
+        doesn't matter, we rename them through our server anyways.)
       </p>
       <p>
-        There is a filesize limit of 512KB. By design, it is nearly impossible to get a PDF under 512KB without using{" "}
+        There is a filesize limit of 512KB. By design, it is nearly impossible
+        to get a PDF under 512KB without using{" "}
         <NextLink href="/resources/latex">
           <a className="blue-link">LaTeX</a>
         </NextLink>{" "}
