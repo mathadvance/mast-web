@@ -35,8 +35,7 @@ you will want .env.local to look like this:
     DOMAIN=https://mast.mathadvance.org
 
     SEASON=4
-    CONTENT_DIR=/path/to/content_dir
-    UPLOAD_DIR=/path/to/upload_dir
+    RESOURCE_DIR=/path/to/resource/dir
 
     MONGODB_URI=mongodb://dbOwner:<password>@localhost:27017/?authSource=mast&readPreference=primary
     MONGODB_DB=mast
@@ -54,7 +53,9 @@ You should not modify `DOMAIN`.
 
 The value of `SEASON` should be whatever the current MAST season is, but it doesn't really matter what you set it to.
 
-Inside `CONTENT_DIR`, you may want to pull a couple of test units, or make a couple of your own. See [mast](https://github.com/mathadvance/mast) for more details. File uploads _should_ work if you are using Windows, but I haven't tried.
+To automatically setup `RESOURCE_DIR`, just run `scripts/directory-setup.js`.
+
+Inside `RESOURCE_DIR`, there are two major subdirectories: `content` and `uploads`. you may want to pull a couple of test units, or make a couple of your own. See [mast](https://github.com/mathadvance/mast) for more details. File uploads _should_ work if you are using Windows, but I haven't tried.
 
 Replace `<password>` with the password of the dbOwner user `dbOwner`.
 
@@ -66,7 +67,7 @@ Mongo is a bit tricky to setup. I won't cover installation, that depends on your
     db.createUser({user: "dbOwner", pwd: "<password>", roles: ["dbOwner"]})
 
 where `<password>` indicates the password passed into `MONGODB_URI`.
-Then exit the mongo shell and run `node mongo-scripts/mongo-setup.js` _inside_ the root directory of this repository.
+Then exit the mongo shell and run `node scripts/mongo-setup.js` _inside_ the root directory of this repository.
 
 In production, you want to enable authentication in Mongo. But this is easily Googleable, so I won't cover it here.
 
@@ -84,5 +85,6 @@ plus a separate directory for the server.
 - utils: Clientside types, logic, etc.
   - server: Handles logic on the clientside before it is sent to the server. (Think of this as middleware tools.)
   - email_templates: Duh.
-- pages: Duh.
-  - api: Duh. (This is what actually sends and retrieves stuff from the server.)
+- pages: Works with Next JS to compile pages on the website.
+  - api: Works with Next JS to create API routes. (This is what actually sends and retrieves stuff from the server.)
+- scripts: Any scripts that users should manually run to set things up or run certain operations.

@@ -3,6 +3,7 @@ import mv from "mv";
 import path from "path";
 
 import { mastDB } from "@/utils/server/mongodb";
+import { applicationPath } from "@/utils/paths";
 
 const maxFileSize = 512 * 1024; // 512 KB, very generous limit for LaTeX
 
@@ -58,11 +59,7 @@ export default async (req, res) => {
 
         mv(
           files.PDF.path,
-          path.join(
-            process.env.UPLOAD_DIR,
-            "applications",
-            `${fields.username}.PDF`
-          ),
+          path.join(applicationPath, `${fields.username}.PDF`),
           { mkdirp: true },
           (err) => {
             if (err) console.log(err);
